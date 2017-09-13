@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="书单记录自己看过的书 计划要看 core java 曾国藩家书 thinking in java  已完成编程 计算机程序的构造和解释历史 万历十五年科幻 银河帝国小说 黄金时代 活着 霍乱时期的爱情 不能承受生命之轻 告别圆舞曲 浮躁: 解忧杂货店 1Q84">
+<meta name="description" content="java获取Ipjava获取IP的接口：Class NetworkInterface:这个类代表了网络接口，包含了硬件，软件以及IP地址的集合的所有相关信息。什么是NetWork Interface：可以理解为你的电脑与internet连接的信息点，不一定关联硬件，也可能是软实现。eg:lookback 是用于测试目的的。  在windows下获取IPv4：直接调用InetAddress类的静态方">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tewinsid Code">
-<meta property="og:url" content="http://yoursite.com/2017/08/31/书单/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/09/13/获取IP/index.html">
 <meta property="og:site_name" content="Tewinsid Code">
-<meta property="og:description" content="书单记录自己看过的书 计划要看 core java 曾国藩家书 thinking in java  已完成编程 计算机程序的构造和解释历史 万历十五年科幻 银河帝国小说 黄金时代 活着 霍乱时期的爱情 不能承受生命之轻 告别圆舞曲 浮躁: 解忧杂货店 1Q84">
+<meta property="og:description" content="java获取Ipjava获取IP的接口：Class NetworkInterface:这个类代表了网络接口，包含了硬件，软件以及IP地址的集合的所有相关信息。什么是NetWork Interface：可以理解为你的电脑与internet连接的信息点，不一定关联硬件，也可能是软实现。eg:lookback 是用于测试目的的。  在windows下获取IPv4：直接调用InetAddress类的静态方">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-08-31T04:51:52.082Z">
+<meta property="og:updated_time" content="2017-09-13T02:18:31.401Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tewinsid Code">
-<meta name="twitter:description" content="书单记录自己看过的书 计划要看 core java 曾国藩家书 thinking in java  已完成编程 计算机程序的构造和解释历史 万历十五年科幻 银河帝国小说 黄金时代 活着 霍乱时期的爱情 不能承受生命之轻 告别圆舞曲 浮躁: 解忧杂货店 1Q84">
+<meta name="twitter:description" content="java获取Ipjava获取IP的接口：Class NetworkInterface:这个类代表了网络接口，包含了硬件，软件以及IP地址的集合的所有相关信息。什么是NetWork Interface：可以理解为你的电脑与internet连接的信息点，不一定关联硬件，也可能是软实现。eg:lookback 是用于测试目的的。  在windows下获取IPv4：直接调用InetAddress类的静态方">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -257,11 +257,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-书单" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-获取IP" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/08/31/书单/" class="article-date">
-      <time datetime="2017-08-31T04:51:52.081Z" itemprop="datePublished">2017-08-31</time>
+      <a href="/2017/09/13/获取IP/" class="article-date">
+      <time datetime="2017-09-13T02:18:31.399Z" itemprop="datePublished">2017-09-13</time>
 </a>
 
 
@@ -275,24 +275,58 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="书单"><a href="#书单" class="headerlink" title="书单"></a>书单</h1><p>记录自己看过的书</p>
-<h2 id="计划要看"><a href="#计划要看" class="headerlink" title="计划要看"></a>计划要看</h2><ul>
-<li>core java</li>
-<li>曾国藩家书</li>
-<li>thinking in java</li>
+        <h1 id="java获取Ip"><a href="#java获取Ip" class="headerlink" title="java获取Ip"></a>java获取Ip</h1><p>java获取IP的接口：<br>Class NetworkInterface:这个类代表了网络接口，包含了硬件，软件以及IP地址的集合的所有相关信息。<br>什么是NetWork Interface：可以理解为你的电脑与internet连接的信息点，不一定关联硬件，也可能是软实现。eg:lookback 是用于测试目的的。</p>
+<ul>
+<li>在windows下获取IPv4：<br>直接调用InetAddress类的静态方法getLocalHost得到InetAddress对象调用getHostAddress方法获得：InetAddress.getLocalHost().getHostAddress();</li>
+<li>在linux下获取IPv4：<br>因为linux下上述方法有时候会返回127.0.0.1原因在于Java使用的JNI代码调用的是Linux中的gethostname2内核函数得到主机名随后反向解析得到IP，这个函数在Linux主机没有绑定IP的情况下根据Host文件定义返回默认的localhost或者127.0.0.1。<br>在使用NetworkInterface方式获取后，可以取得IP地址</li>
 </ul>
-<h2 id="已完成"><a href="#已完成" class="headerlink" title="已完成"></a>已完成</h2><h3 id="编程"><a href="#编程" class="headerlink" title="编程"></a>编程</h3><ul>
-<li>计算机程序的构造和解释<h3 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h3></li>
-<li>万历十五年<h3 id="科幻"><a href="#科幻" class="headerlink" title="科幻"></a>科幻</h3></li>
-<li>银河帝国<h3 id="小说"><a href="#小说" class="headerlink" title="小说"></a>小说</h3></li>
-<li>黄金时代</li>
-<li>活着</li>
-<li>霍乱时期的爱情</li>
-<li>不能承受生命之轻</li>
-<li>告别圆舞曲</li>
-<li>浮躁:</li>
-<li>解忧杂货店</li>
-<li>1Q84</li>
+<p><pre><code><br>public static InetAddress getIPAddress() {<br>   try {<br>       Enumeration<networkinterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();<br>       NetworkInterface networkInterface;<br>       Enumeration<inetaddress> inetAddresses;<br>       InetAddress inetAddress;<br>       String ip;<br>       while (networkInterfaces.hasMoreElements()) {<br>           networkInterface = networkInterfaces.nextElement();<br>           inetAddresses = networkInterface.getInetAddresses();<br>           while (inetAddresses.hasMoreElements()) {<br>               inetAddress = inetAddresses.nextElement();<br>               if (inetAddress != null &amp;&amp; inetAddress instanceof Inet4Address &amp;&amp; !inetAddress.isLoopbackAddress()) {<br>                   return inetAddress;<br>               }<br>           }<br>       }<br>   } catch (Exception e) {<br>       e.printStackTrace();<br>   }<br>   return null;<br>}<br></inetaddress></networkinterface></code></pre></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>地址分类：</p>
+<ul>
+<li><p>单播地址</p>
+<ul>
+<li>点到点</li>
+<li>通配符地址（anylocal or wildcard address）一定不能将其分配给任何节点。它指示缺少地址。它的一个使用示例是可以作为绑定的目标，这允许服务器在服务器主机有多个接口的情况下接收任何接口上的客户端连接。 0.0.0.0</li>
+<li>未指定的不能用于IP包目的地的地址</li>
+<li>回环地址（lookback），127.0.0.1，任何发送到改地址的消息都会会送到本机。</li>
+</ul>
+</li>
+<li><p>多播地址</p>
+<ul>
+<li><p>多播地址让源设备能够将分组发送给一组设备。属于多播组的设备将被分配一个多播组IP地址。<br>IP 地址范围</p>
+</li>
+<li><p>链接本地 地址设计用于在单个链接上寻址以解决诸如自动地址配置、邻居发现 (neighbor discovery) 或没有路由器时的问题。</p>
+</li>
+<li>站点本地 地址设计用于在不需要全局前缀时站点内部寻址。</li>
+<li>全局 地址在 Internet 中是唯一的</li>
+</ul>
+</li>
+</ul>
+<p>0.0.0.0 ： 不可路由的元地址，用来指定无效，未知或没有目标应用<br>在服务器环境下，0.0.0.0意味着“本机的所有IPv4地址”，如果主机上有192.168.1.1 和 10.1.2.1,两个IP，服务器监听0.0.0.0，它将接受两个IP的消息。<br>在路由器环境下，0.0.0.0通常意味着缺省路由，指向互联网上不是本机的某个地方，根据搜索得到定义（严格说来，0.0.0.0已经不是一个真正意义上的IP地址了。它表示的是这样一个集合：所有不清楚的主机和目的网络。这里的“不清楚”是指在本机的路由 表里没有特定条目指明如何到达。对本机来说，它就是一个“收容所”，所有不认识的“三无”人员，一 律送进去。如果你在网络设置中设置了缺省网关，那么Windows系统会自动产生一个目的地址为0.0.0.0的缺省路由。）</p>
+<p>TCP/IP 支持的网络接口类型：</p>
+<ul>
+<li>标准以太网第二版 (en)</li>
+<li>IEEE 802.3 (et)</li>
+<li>令牌环 (tr)</li>
+<li>串行线路因特网协议 (SLIP)</li>
+<li>回送 (lo)</li>
+<li>FDDI</li>
+<li>串行光纤 (so)</li>
+<li>ATM (at)</li>
+<li>点到点协议 (PPP)</li>
+<li>虚拟 IP 地址 (vi)<br>以太网、802.3 和令牌环接口是与局域网 (LAN) 一起使用的。SLIP 接口用于处理串行连接。回送接口是主机用来发送返回到自己的消息。“串行光纤”接口与使用串行光纤链路设备处理程序的光纤点到点网络一起使用。ATM 接口用于处理 100 兆字节/秒 和 155 兆字节/秒 ATM 连接。当通过调制解调器连接到另一台计算机或网络时，最常使用点到点协议。虚拟 IP 地址接口（也被称为虚拟接口）没有同任何特别的网络适配器关联。在一台主机上能配置一个虚拟接口的多个实例。当配置了虚拟接口时，第一个虚拟接口的地址变成源地址除非应用程序选择了一个不同的接口。把一个虚拟 IP 地址用做它们源地址的进程可以通过任何为目的地提供最佳路由的网络接口发送数据包。指定给一个虚拟 IP 地址的入局包传送给进程而不考虑它们到达所通过的接口。</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.ibm.com/support/knowledgecenter/zh/ssw_aix_61/com.ibm.aix.networkcomm/tcpip_interfaces.htm" target="_blank" rel="external">IBM</a></li>
+<li><a href="http://book.51cto.com/art/200904/120471.htm" target="_blank" rel="external">单薄，广播，多播</a></li>
+<li><a href="https://en.wikipedia.org/wiki/0.0.0.0" target="_blank" rel="external">0.0.0.0</a></li>
+<li><a href="http://www.cnblogs.com/hnrainll/archive/2011/10/13/2210101.html" target="_blank" rel="external">全零网络IP地址0.0.0.0表示意义详谈</a></li>
+<li><a href="https://stackoverflow.com/questions/11931175/what-does-wildcard-address-in-inetsocketaddress-mean" target="_blank" rel="external">What does wildcard address in InetSocketAddress mean?</a></li>
+<li><a href="http://docs.oracle.com/javase/7/docs/api/" target="_blank" rel="external">jdk文档</a></li>
+<li><a href="https://www.lidaren.com/archives/1726" target="_blank" rel="external">Linux Java获取本机网卡IP地址</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/OSI%E6%A8%A1%E5%9E%8B" target="_blank" rel="external">OSI</a></li>
+<li><a href="http://blog.csdn.net/aaa_aa000/article/details/46647303" target="_blank" rel="external">TCP/IP协议分层详解</a></li>
+<li><a href="http://www.myhowto.org/java/42-understanding-host-name-resolution-and-dns-behavior-in-java/" target="_blank" rel="external">关键：Understanding host name resolution and DNS behavior in Java</a></li>
 </ul>
 
       
@@ -302,13 +336,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/08/31/书单/"></a></p>
+        <p><span>本文标题:</span><a href="/2017/09/13/获取IP/"></a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Tewinsid</a></p>
-        <p><span>发布时间:</span>2017-08-31, 12:51:52</p>
-        <p><span>最后更新:</span>2017-08-31, 12:51:52</p>
+        <p><span>发布时间:</span>2017-09-13, 10:18:31</p>
+        <p><span>最后更新:</span>2017-09-13, 10:18:31</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/08/31/书单/" title="">http://yoursite.com/2017/08/31/书单/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/08/31/书单/　　作者: Tewinsid" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/09/13/获取IP/" title="">http://yoursite.com/2017/09/13/获取IP/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/09/13/获取IP/　　作者: Tewinsid" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -318,13 +352,24 @@
 
 
 
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/09/06/Church_Encoding/">
+                    
+                </a>
+            </div>
+        
+    </nav>
+
   
 </article>
 
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#书单"><span class="toc-number">1.</span> <span class="toc-text">书单</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#计划要看"><span class="toc-number">1.1.</span> <span class="toc-text">计划要看</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#已完成"><span class="toc-number">1.2.</span> <span class="toc-text">已完成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#编程"><span class="toc-number">1.2.1.</span> <span class="toc-text">编程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#历史"><span class="toc-number">1.2.2.</span> <span class="toc-text">历史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#科幻"><span class="toc-number">1.2.3.</span> <span class="toc-text">科幻</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小说"><span class="toc-number">1.2.4.</span> <span class="toc-text">小说</span></a></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#java获取Ip"><span class="toc-number">1.</span> <span class="toc-text">java获取Ip</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">1.1.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.2.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -386,11 +431,13 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2017/09/06/Church_Encoding/" title="下一篇: ">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/08/31/书单/">书单</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/09/13/获取IP/">获取IP</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/06/Church_Encoding/">Church_Encoding</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/06/书单/">书单</a></li></ul>
 
 
 
