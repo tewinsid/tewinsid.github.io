@@ -94,17 +94,17 @@
 
 
 
-<meta name="description" content="java获取Ipjava获取IP的接口：Class NetworkInterface:这个类代表了网络接口，包含了硬件，软件以及IP地址的集合的所有相关信息。什么是NetWork Interface：可以理解为你的电脑与internet连接的信息点，不一定关联硬件，也可能是软实现。eg:lookback 是用于测试目的的。  在windows下获取IPv4：直接调用InetAddress类的静态方">
+<meta name="description" content="Church encoding起因：SICP练习2-6为了展示函数式编程过程作为第一类对象原则引入了Church计数提供了如下定义  (define zero (lambda (f) (lambda (x) x))) (define (add-1 n) (lambda (f) (lambda (x) (f ((n f) x)))))  对此我有zero的定义产生了疑问  0 ≡ λf.λx. x">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tewinsid Code">
-<meta property="og:url" content="http://yoursite.com/2017/09/13/获取IP/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/09/13/Church_Encoding/index.html">
 <meta property="og:site_name" content="Tewinsid Code">
-<meta property="og:description" content="java获取Ipjava获取IP的接口：Class NetworkInterface:这个类代表了网络接口，包含了硬件，软件以及IP地址的集合的所有相关信息。什么是NetWork Interface：可以理解为你的电脑与internet连接的信息点，不一定关联硬件，也可能是软实现。eg:lookback 是用于测试目的的。  在windows下获取IPv4：直接调用InetAddress类的静态方">
+<meta property="og:description" content="Church encoding起因：SICP练习2-6为了展示函数式编程过程作为第一类对象原则引入了Church计数提供了如下定义  (define zero (lambda (f) (lambda (x) x))) (define (add-1 n) (lambda (f) (lambda (x) (f ((n f) x)))))  对此我有zero的定义产生了疑问  0 ≡ λf.λx. x">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-09-13T02:18:31.401Z">
+<meta property="og:updated_time" content="2017-09-13T11:18:18.052Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tewinsid Code">
-<meta name="twitter:description" content="java获取Ipjava获取IP的接口：Class NetworkInterface:这个类代表了网络接口，包含了硬件，软件以及IP地址的集合的所有相关信息。什么是NetWork Interface：可以理解为你的电脑与internet连接的信息点，不一定关联硬件，也可能是软实现。eg:lookback 是用于测试目的的。  在windows下获取IPv4：直接调用InetAddress类的静态方">
+<meta name="twitter:description" content="Church encoding起因：SICP练习2-6为了展示函数式编程过程作为第一类对象原则引入了Church计数提供了如下定义  (define zero (lambda (f) (lambda (x) x))) (define (add-1 n) (lambda (f) (lambda (x) (f ((n f) x)))))  对此我有zero的定义产生了疑问  0 ≡ λf.λx. x">
 
 
 
@@ -133,7 +133,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/09/13/获取IP/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/09/13/Church_Encoding/"/>
 
 
 
@@ -262,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/13/获取IP/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/13/Church_Encoding/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tewinsid">
@@ -291,7 +291,7 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T10:18:31+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T19:18:18+08:00">
                 2017-09-13
               </time>
             
@@ -329,58 +329,48 @@
       
 
       
-        <h1 id="java获取Ip"><a href="#java获取Ip" class="headerlink" title="java获取Ip"></a>java获取Ip</h1><p>java获取IP的接口：<br>Class NetworkInterface:这个类代表了网络接口，包含了硬件，软件以及IP地址的集合的所有相关信息。<br>什么是NetWork Interface：可以理解为你的电脑与internet连接的信息点，不一定关联硬件，也可能是软实现。eg:lookback 是用于测试目的的。</p>
+        <h1 id="Church-encoding"><a href="#Church-encoding" class="headerlink" title="Church encoding"></a>Church encoding</h1><p>起因：SICP练习2-6为了展示函数式编程过程作为第一类对象原则引入了Church计数提供了如下定义</p>
 <ul>
-<li>在windows下获取IPv4：<br>直接调用InetAddress类的静态方法getLocalHost得到InetAddress对象调用getHostAddress方法获得：InetAddress.getLocalHost().getHostAddress();</li>
-<li>在linux下获取IPv4：<br>因为linux下上述方法有时候会返回127.0.0.1原因在于Java使用的JNI代码调用的是Linux中的gethostname2内核函数得到主机名随后反向解析得到IP，这个函数在Linux主机没有绑定IP的情况下根据Host文件定义返回默认的localhost或者127.0.0.1。<br>在使用NetworkInterface方式获取后，可以取得IP地址</li>
+<li><code>(define zero (lambda (f) (lambda (x) x)))</code></li>
+<li><code>(define (add-1 n) (lambda (f) (lambda (x) (f ((n f) x)))))</code></li>
 </ul>
-<p><pre><code><br>public static InetAddress getIPAddress() {<br>   try {<br>       Enumeration<networkinterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();<br>       NetworkInterface networkInterface;<br>       Enumeration<inetaddress> inetAddresses;<br>       InetAddress inetAddress;<br>       String ip;<br>       while (networkInterfaces.hasMoreElements()) {<br>           networkInterface = networkInterfaces.nextElement();<br>           inetAddresses = networkInterface.getInetAddresses();<br>           while (inetAddresses.hasMoreElements()) {<br>               inetAddress = inetAddresses.nextElement();<br>               if (inetAddress != null &amp;&amp; inetAddress instanceof Inet4Address &amp;&amp; !inetAddress.isLoopbackAddress()) {<br>                   return inetAddress;<br>               }<br>           }<br>       }<br>   } catch (Exception e) {<br>       e.printStackTrace();<br>   }<br>   return null;<br>}<br></inetaddress></networkinterface></code></pre></p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>地址分类：</p>
+<p>对此我有zero的定义产生了疑问</p>
 <ul>
-<li><p>单播地址</p>
+<li>0 ≡ λf.λx. x</li>
+<li>1 ≡ λf.λx. f x</li>
+<li>2 ≡ λf.λx. f (f x)</li>
+<li>3 ≡ λf.λx. f (f (f x))</li>
+<li>…</li>
+<li>n ≡ λf.λx. fn x</li>
+</ul>
+<p>邱奇数定义如上所示，邱奇数本身也是lambda函数，带入a，b后</p>
 <ul>
-<li>点到点</li>
-<li>通配符地址（anylocal or wildcard address）一定不能将其分配给任何节点。它指示缺少地址。它的一个使用示例是可以作为绑定的目标，这允许服务器在服务器主机有多个接口的情况下接收任何接口上的客户端连接。 0.0.0.0</li>
-<li>未指定的不能用于IP包目的地的地址</li>
-<li>回环地址（lookback），127.0.0.1，任何发送到改地址的消息都会会送到本机。</li>
+<li>0 a b = (λ f x. x) a b = b</li>
+<li>1 a b = (λ f x. f x) a b = a b</li>
+<li>2 a b = (λ f x. f (f x)) a b = a (a b)</li>
+</ul>
+<p>可以看出邱奇数把数的定义从现有的数的表示的符号逻辑中抽象出来，表示为对x执行f的次数(x,f是哑元)。</p>
+<p>同时邱奇数中对0的定义同时也是λ演算对false的定义（在λ演算中bool值是一个选择函数）</p>
+<ul>
+<li>T = λ x y. x</li>
+<li>F = λ x y. y</li>
+</ul>
+<p>结论：邱奇数是数概念的另一个表示方式，是一种抽象。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li>Church Encoding 是把数据和运算符嵌入到lambda演算内的一种方式，最常见的形式是邱奇数，它是使用lambda符号的自然数的表示法。</li>
+<li>柯里化（英语：Currying）是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。</li>
+<li>λ演算（英语：lambda calculus，λ-calculus）是一套用于研究函数定义、函数应用和递归的形式系统。这种演算可以用来清晰地定义什么是一个可计算函数。Lambda演算可以被称为最小的通用程序设计语言。它包括一条变换规则（变量替换）和一条函数定义方式，Lambda演算之通用在于，任何一个可计算函数都能用这种形式来表达和求值。因而，它是等价于图灵机的。</li>
+<li>λ演算三个核心基本假定<ul>
+<li>函数为第一类对象的原则，“ 全体λ表达式构成Λ空间，λ表达式为Λ空间到Λ空间的函数 ”。</li>
+<li>函数的抽象原则，</li>
+<li>应用函数的规则，对于一个 λ 表达式 P 如果希望将另一个 λ 表达式 q 作为它的输入进行求值，我们简单的将他们左右并列书写即可。</li>
 </ul>
 </li>
-<li><p>多播地址</p>
-<ul>
-<li><p>多播地址让源设备能够将分组发送给一组设备。属于多播组的设备将被分配一个多播组IP地址。<br>IP 地址范围</p>
-</li>
-<li><p>链接本地 地址设计用于在单个链接上寻址以解决诸如自动地址配置、邻居发现 (neighbor discovery) 或没有路由器时的问题。</p>
-</li>
-<li>站点本地 地址设计用于在不需要全局前缀时站点内部寻址。</li>
-<li>全局 地址在 Internet 中是唯一的</li>
-</ul>
-</li>
-</ul>
-<p>0.0.0.0 ： 不可路由的元地址，用来指定无效，未知或没有目标应用<br>在服务器环境下，0.0.0.0意味着“本机的所有IPv4地址”，如果主机上有192.168.1.1 和 10.1.2.1,两个IP，服务器监听0.0.0.0，它将接受两个IP的消息。<br>在路由器环境下，0.0.0.0通常意味着缺省路由，指向互联网上不是本机的某个地方，根据搜索得到定义（严格说来，0.0.0.0已经不是一个真正意义上的IP地址了。它表示的是这样一个集合：所有不清楚的主机和目的网络。这里的“不清楚”是指在本机的路由 表里没有特定条目指明如何到达。对本机来说，它就是一个“收容所”，所有不认识的“三无”人员，一 律送进去。如果你在网络设置中设置了缺省网关，那么Windows系统会自动产生一个目的地址为0.0.0.0的缺省路由。）</p>
-<p>TCP/IP 支持的网络接口类型：</p>
-<ul>
-<li>标准以太网第二版 (en)</li>
-<li>IEEE 802.3 (et)</li>
-<li>令牌环 (tr)</li>
-<li>串行线路因特网协议 (SLIP)</li>
-<li>回送 (lo)</li>
-<li>FDDI</li>
-<li>串行光纤 (so)</li>
-<li>ATM (at)</li>
-<li>点到点协议 (PPP)</li>
-<li>虚拟 IP 地址 (vi)<br>以太网、802.3 和令牌环接口是与局域网 (LAN) 一起使用的。SLIP 接口用于处理串行连接。回送接口是主机用来发送返回到自己的消息。“串行光纤”接口与使用串行光纤链路设备处理程序的光纤点到点网络一起使用。ATM 接口用于处理 100 兆字节/秒 和 155 兆字节/秒 ATM 连接。当通过调制解调器连接到另一台计算机或网络时，最常使用点到点协议。虚拟 IP 地址接口（也被称为虚拟接口）没有同任何特别的网络适配器关联。在一台主机上能配置一个虚拟接口的多个实例。当配置了虚拟接口时，第一个虚拟接口的地址变成源地址除非应用程序选择了一个不同的接口。把一个虚拟 IP 地址用做它们源地址的进程可以通过任何为目的地提供最佳路由的网络接口发送数据包。指定给一个虚拟 IP 地址的入局包传送给进程而不考虑它们到达所通过的接口。</li>
-</ul>
+</ol>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://www.ibm.com/support/knowledgecenter/zh/ssw_aix_61/com.ibm.aix.networkcomm/tcpip_interfaces.htm" target="_blank" rel="external">IBM</a></li>
-<li><a href="http://book.51cto.com/art/200904/120471.htm" target="_blank" rel="external">单薄，广播，多播</a></li>
-<li><a href="https://en.wikipedia.org/wiki/0.0.0.0" target="_blank" rel="external">0.0.0.0</a></li>
-<li><a href="http://www.cnblogs.com/hnrainll/archive/2011/10/13/2210101.html" target="_blank" rel="external">全零网络IP地址0.0.0.0表示意义详谈</a></li>
-<li><a href="https://stackoverflow.com/questions/11931175/what-does-wildcard-address-in-inetsocketaddress-mean" target="_blank" rel="external">What does wildcard address in InetSocketAddress mean?</a></li>
-<li><a href="http://docs.oracle.com/javase/7/docs/api/" target="_blank" rel="external">jdk文档</a></li>
-<li><a href="https://www.lidaren.com/archives/1726" target="_blank" rel="external">Linux Java获取本机网卡IP地址</a></li>
-<li><a href="https://zh.wikipedia.org/wiki/OSI%E6%A8%A1%E5%9E%8B" target="_blank" rel="external">OSI</a></li>
-<li><a href="http://blog.csdn.net/aaa_aa000/article/details/46647303" target="_blank" rel="external">TCP/IP协议分层详解</a></li>
-<li><a href="http://www.myhowto.org/java/42-understanding-host-name-resolution-and-dns-behavior-in-java/" target="_blank" rel="external">关键：Understanding host name resolution and DNS behavior in Java</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%CE%9B%E6%BC%94%E7%AE%97" target="_blank" rel="external">λ演算wiki</a></li>
+<li><a href="http://www.jianshu.com/p/e7db2f50b012" target="_blank" rel="external">关键：神奇的λ演算</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E9%82%B1%E5%A5%87%E6%95%B0" target="_blank" rel="external">邱奇数</a></li>
 </ul>
 
       
@@ -406,7 +396,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/06/书单/" rel="next" title="">
+              <a href="/2017/09/13/获取IP/" rel="next" title="">
                 <i class="fa fa-chevron-left"></i> 
               </a>
             
@@ -415,10 +405,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/09/13/Church_Encoding/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -534,7 +520,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java获取Ip"><span class="nav-number">1.</span> <span class="nav-text">java获取Ip</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">1.1.</span> <span class="nav-text">参考资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.2.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Church-encoding"><span class="nav-number">1.</span> <span class="nav-text">Church encoding</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">1.1.</span> <span class="nav-text">参考资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.2.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
             
 
           </div>
