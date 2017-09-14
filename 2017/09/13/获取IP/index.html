@@ -97,14 +97,14 @@
 <meta name="description" content="通过java提供的接口获取本机IP的方法,windows和类unix系统讨论">
 <meta name="keywords" content="java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java获取Ip">
+<meta property="og:title" content="java获取IPhexo">
 <meta property="og:url" content="http://yoursite.com/2017/09/13/获取IP/index.html">
 <meta property="og:site_name" content="Tewinsid Code">
 <meta property="og:description" content="通过java提供的接口获取本机IP的方法,windows和类unix系统讨论">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-09-13T11:44:57.376Z">
+<meta property="og:updated_time" content="2017-09-14T08:10:01.348Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java获取Ip">
+<meta name="twitter:title" content="java获取IPhexo">
 <meta name="twitter:description" content="通过java提供的接口获取本机IP的方法,windows和类unix系统讨论">
 
 
@@ -140,7 +140,7 @@
 
 
 
-  <title>java获取Ip | Tewinsid Code</title>
+  <title>java获取IPhexo | Tewinsid Code</title>
   
 
 
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java获取Ip</h1>
+          <h1 class="post-title" itemprop="name headline">java获取IPhexo</h1>
         
 
         <div class="post-meta">
@@ -330,10 +330,10 @@
       
 
       
-        <p>通过java提供的接口获取本机IP的方法,windows和类unix系统讨论<br><a id="more"></a><br>java获取IP的接口：<br>Class NetworkInterface:这个类代表了网络接口，包含了硬件，软件以及IP地址的集合的所有相关信息。<br>什么是NetWork Interface：可以理解为你的电脑与internet连接的信息点，不一定关联硬件，也可能是软实现。eg:lookback 是用于测试目的的。</p>
+        <p>通过java提供的接口获取本机IP的方法,windows和类unix系统讨论<br><a id="more"></a><br>java获取IP的接口：<br>Class NetworkInterface:这个类代表了网络接口，包含了硬件，软件以及IP地址的集合等所有相关信息。<br>什么是NetWork Interface：可以理解为电脑与internet连接的信息点，不一定关联硬件，也可能是软实现。eg:lookback 是用于测试目的的。</p>
 <ul>
 <li>在windows下获取IPv4：<br>直接调用InetAddress类的静态方法getLocalHost得到InetAddress对象调用getHostAddress方法获得：InetAddress.getLocalHost().getHostAddress();</li>
-<li>在类unix下获取IPv4：<br>因为类unix系统下上述方法有时候会返回127.0.0.1原因在于Java使用的JNI代码调用的是Linux中的gethostname2内核函数得到主机名随后反向解析得到IP，这个函数在Linux主机没有绑定IP的情况下根据Host文件定义返回默认的localhost或者127.0.0.1。<br>在使用NetworkInterface方式获取后，可以取得IP地址</li>
+<li>在类unix下获取IPv4：<br>在类unix系统下上述方法有时候会返回127.0.0.1，原因在于Java使用的JNI代码调用类Unix系统中的gethostname内核函数得到主机名随后反向解析得到IP，这个函数在类Unix主机没有绑定IP的情况下根据Host文件定义返回默认的localhost或者127.0.0.1。<br>解决方法：使用NetworkInterface方式获取。</li>
 </ul>
 <p><pre><code><br>public static InetAddress getIPAddress() {<br>   try {<br>       Enumeration<networkinterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();<br>       NetworkInterface networkInterface;<br>       Enumeration<inetaddress> inetAddresses;<br>       InetAddress inetAddress;<br>       String ip;<br>       while (networkInterfaces.hasMoreElements()) {<br>           networkInterface = networkInterfaces.nextElement();<br>           inetAddresses = networkInterface.getInetAddresses();<br>           while (inetAddresses.hasMoreElements()) {<br>               inetAddress = inetAddresses.nextElement();<br>               if (inetAddress != null &amp;&amp; inetAddress instanceof Inet4Address &amp;&amp; !inetAddress.isLoopbackAddress()) {<br>                   return inetAddress;<br>               }<br>           }<br>       }<br>   } catch (Exception e) {<br>       e.printStackTrace();<br>   }<br>   return null;<br>}<br></inetaddress></networkinterface></code></pre></p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>地址分类：</p>
