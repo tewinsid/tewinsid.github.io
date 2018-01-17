@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="java操纵office">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jacob">
+<meta property="og:url" content="http://yoursite.com/2018/01/17/jacob/index.html">
+<meta property="og:site_name" content="Tewinsid Code">
+<meta property="og:description" content="java操纵office">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://www.ibm.com/developerworks/cn/java/j-lo-jacob/image001.jpg">
+<meta property="og:updated_time" content="2018-01-17T10:28:25.002Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jacob">
+<meta name="twitter:description" content="java操纵office">
+<meta name="twitter:image" content="https://www.ibm.com/developerworks/cn/java/j-lo-jacob/image001.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/17/jacob/"/>
+
+
+
+
+
+  <title>jacob | Tewinsid Code</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tewinsid Code</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/17/jacob/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tewinsid">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tewinsid Code">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">jacob</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-17T10:43:04+08:00">
+                2018-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>java操纵office<br><a id="more"></a></p>
+<hr>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>####组件对象模型（component Object Model）：微软的一套软件组件的二进制接口的标准，使动态创建成为可能。实际上com是一种与语言无关的对象实现方式，可以再不同环境下被复用，com允许复用对象而不必了解对象内部实现细节，因此组件实现者必须提供良好的接口定义以屏蔽实现细节，通过引用计数组件对象自己负责构造和析构，从而屏蔽里不同语言之间的内存差异。com已经部分被.net取代。</p>
+<p>####动态链接库（dll）<br>是微软在windows系统中实现共享函数库概念的一种实现方式，扩展名.dll、.OCX(包含activeX控制的库）或者.DRV(旧式系统驱动程序)</p>
+<p>####动态链接<br>二进制文档，与exe文档相同。把一些经常公用的代码制作成dll文档，当可执行文件调用到dll文档内的函数时，windows才会把dll加载到内存中，内存浪费的情形可大幅降低。静态连接库直接连接到可执行文件（exe）。将dll加载到内存后，会得到一组函数的地址，通过call调用想用的函数</p>
+<p>####jacob介绍<br>目的：通过java调用COM组件实现操纵Office<br>COM组件提供了一种与其他语言交互的方式，叫做自动化（automation），使用自动化，调用COM中暴露的方法，主要有两种机制，早起绑定和晚期绑定<br>早起绑定：显示的声明对象、数据类型、编译器获取足够的信息进行链接和优化，这样通常可以获得更好的性能，IBM的RJCB项目，性能高，需要了解COM组件更多的实现细节，工作量大<br>晚期绑定：通过IDispatch接口实现，类似于java反射，可以按照名称和id进行方法调用，这种设计主要是支持脚本语言操纵COM，性能较差，灵活，简单，不必关注动态链接库的细节<br><img src="https://www.ibm.com/developerworks/cn/java/j-lo-jacob/image001.jpg" alt="类图"></p>
+<h2 id="jacob使用准备"><a href="#jacob使用准备" class="headerlink" title="jacob使用准备"></a>jacob使用准备</h2><p><a href="https://sourceforge.net/projects/jacob-project/" target="_blank" rel="external">下载路径</a><br>下载后解压把其中的jacob*.dll放到path中,jacob.jar放到工程的classpath下<br>jacob版本要与jdk版本相对应</p>
+<h2 id="jacob常用类及方法"><a href="#jacob常用类及方法" class="headerlink" title="jacob常用类及方法"></a>jacob常用类及方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">ComThread//初始化com线程，释放com线程</div><div class="line">ActiveXComponent//创建office的一个应用</div><div class="line">ActiveXComponent wordApp = new ActiveXComponent(&quot;Word.Application&quot;);//word  </div><div class="line">ActiveXComponent excelApp = new ActiveXComponent(&quot;Excel.Application&quot;);//excel  </div><div class="line">Dispatch//调度处理类，封装了一些操作来操纵office，jacob是一种链式操作模式，其中可操作对象基本都是这种类型</div><div class="line">//Dispatch的集中静态方法</div><div class="line">*.call()//调用COM对象的方法，返回Variant值</div><div class="line">*.invoke()//和call方法相同但是不返回值</div><div class="line">*.get()//获取COM对象属性，返回Variant值</div><div class="line">*.put()//设置COM对象属性</div><div class="line">Variant//封装参数数据类型，调用com接口需要一些参数需要知名数据类型</div><div class="line">new Variant(1)</div><div class="line">new Variant(&quot;1&quot;) </div><div class="line">//Variant的toDispatch()方法，将Dispatch方法返回的variant类型转换为Diapatch，进行下一次链式操作</div></pre></td></tr></table></figure>
+<p>##jacob操纵word<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">//初始化com线程</div><div class="line">ComThread.InitSTA();</div><div class="line">//创建word对象</div><div class="line">ActiveXComponent wordApp = new ActiveXComponent(&quot;Word.Application&quot;);//word</div><div class="line">//设置应用操作是文档不在明面上显示，只在后台静默处理。  </div><div class="line">wordApp.setProperty(&quot;Visible&quot;, new Variant(false));</div><div class="line">//得到所有文档集对象</div><div class="line">Dispatch document = wordApp.getProperty(&quot;Documents&quot;).toDispatch();</div><div class="line">//打开当前操纵文档</div><div class="line">Dispatch doc = Dispatch.call(document, &quot;Open&quot;,new Variant(&quot;D:\\my.doc&quot;)).toDispatch();</div><div class="line">//关闭文档</div><div class="line">fileName = Dispatch.get(this.doc, &quot;Name&quot;).getString();</div><div class="line">Dispatch.call(this.doc, &quot;Close&quot;, new Variant(ifSave));</div><div class="line">//退出word</div><div class="line">this.app.invoke(&quot;Quit&quot;, new Variant[]&#123;&#125;);</div><div class="line">//释放com线程</div><div class="line">ComThread.Release();</div></pre></td></tr></table></figure></p>
+<p>当前光标<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//得到当前光标，光标包括Start，End使用数字i代表文档中位置,End&lt;i&lt;Start代表被选中部分</div><div class="line">Dispatch selection = Dispatch.get(wordApp, &quot;Selection&quot;).toDispatch();</div><div class="line">//把光标置于文档开始处</div><div class="line">Dispatch.put(selection, &quot;Start&quot;, 0+&quot;&quot;)</div><div class="line">Dispatch.put(selection, &quot;End&quot;, 0+&quot;&quot;)</div></pre></td></tr></table></figure></p>
+<p>jacob中Dispatch的get方法定义如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public static Variant get(Dispatch dispatchTarget, String name) &#123;</div><div class="line">    throwIfUnattachedDispatch(dispatchTarget);</div><div class="line">    return invokev(dispatchTarget, name, 2, NO_VARIANT_ARGS, NO_INT_ARGS);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public static Variant get(Dispatch dispatchTarget, int dispid) &#123;</div><div class="line">    throwIfUnattachedDispatch(dispatchTarget);</div><div class="line">    return invokev(dispatchTarget, dispid, 2, NO_VARIANT_ARGS, NO_INT_ARGS);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>jacob中Dispatch的put方法定义如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public static void put(Dispatch dispatchTarget, String name, Object val) &#123;</div><div class="line">    throwIfUnattachedDispatch(dispatchTarget);</div><div class="line">    invoke(dispatchTarget, name, 4, new Object[]&#123;val&#125;, new int[1]);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public static void put(Dispatch dispatchTarget, int dispid, Object val) &#123;</div><div class="line">    throwIfUnattachedDispatch(dispatchTarget);</div><div class="line">    invoke(dispatchTarget, dispid, 4, new Object[]&#123;val&#125;, new int[1]);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>jacob中Dispatch的call方法定义如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public static Variant call(Dispatch dispatchTarget, String name, Object... attributes) &#123;</div><div class="line">    throwIfUnattachedDispatch(dispatchTarget);</div><div class="line">    return callN(dispatchTarget, name, attributes);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以看到jacob中通过put方法调用vba实现晚期绑定，通过get方法得到dispatchTarget属性对应的参数值，通过set,call方法设置参数值，所以word中的操纵都可以映射为vba方法(可以通过录制宏得到对应name和params)。</p>
+<ul>
+<li>常用方法<br>检查当前操作系统是否存在jacob库<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">try &#123;</div><div class="line">    // 加载jacob库</div><div class="line">    System.loadLibrary(&quot;jacob&quot;);</div><div class="line">    return true;</div><div class="line">&#125; catch (UnsatisfiedLinkError e) &#123;</div><div class="line">    System.out.println(&quot;在当前操作系统路径中没有找到jacob库！&quot;);</div><div class="line">    return false;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>检查当前操作系统是否存在jacob库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">try &#123;</div><div class="line">    // 加载jacob库</div><div class="line">    System.loadLibrary(&quot;jacob&quot;);</div><div class="line">    return true;</div><div class="line">&#125; catch (UnsatisfiedLinkError e) &#123;</div><div class="line">    System.out.println(&quot;在当前操作系统路径中没有找到jacob库！&quot;);</div><div class="line">    return false;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="操纵word常用操作"><a href="#操纵word常用操作" class="headerlink" title="操纵word常用操作"></a>操纵word常用操作</h2><ul>
+<li>表格操作</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">目标对象</th>
+<th style="text-align:left">操作</th>
+<th style="text-align:left">name</th>
+<th style="text-align:left">params</th>
+<th style="text-align:left">return</th>
+<th style="text-align:left">descript</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">doc</td>
+<td style="text-align:left">get</td>
+<td style="text-align:left">“Tables”</td>
+<td style="text-align:left">null</td>
+<td style="text-align:left">tables</td>
+<td style="text-align:left">全部表格对象</td>
+</tr>
+<tr>
+<td style="text-align:left">tables</td>
+<td style="text-align:left">get</td>
+<td style="text-align:left">“Count”</td>
+<td style="text-align:left">null</td>
+<td style="text-align:left">表格数量</td>
+<td style="text-align:left">获取表格数量</td>
+</tr>
+<tr>
+<td style="text-align:left">tables</td>
+<td style="text-align:left">call</td>
+<td style="text-align:left">“Item”</td>
+<td style="text-align:left">new Variant(tableIndex)</td>
+<td style="text-align:left">table</td>
+<td style="text-align:left">获取第n个表格</td>
+</tr>
+<tr>
+<td style="text-align:left">table</td>
+<td style="text-align:left">get</td>
+<td style="text-align:left">“Columns”</td>
+<td style="text-align:left">null</td>
+<td style="text-align:left">cols</td>
+<td style="text-align:left">列对象</td>
+</tr>
+<tr>
+<td style="text-align:left">cols</td>
+<td style="text-align:left">get</td>
+<td style="text-align:left">“Count”</td>
+<td style="text-align:left">null</td>
+<td style="text-align:left">表格列数量</td>
+<td style="text-align:left">获取特定表格列个数</td>
+</tr>
+<tr>
+<td style="text-align:left">table</td>
+<td style="text-align:left">get</td>
+<td style="text-align:left">“Rows”</td>
+<td style="text-align:left">null</td>
+<td style="text-align:left">rows</td>
+<td style="text-align:left">行对象</td>
+</tr>
+<tr>
+<td style="text-align:left">rows</td>
+<td style="text-align:left">get</td>
+<td style="text-align:left">“Count”</td>
+<td style="text-align:left">null</td>
+<td style="text-align:left">表格行数量</td>
+<td style="text-align:left">获取特定表格行个数</td>
+</tr>
+<tr>
+<td style="text-align:left">rows</td>
+<td style="text-align:left">get</td>
+<td style="text-align:left">“Item”</td>
+<td style="text-align:left">new Variant(rowIndex)</td>
+<td style="text-align:left">row</td>
+<td style="text-align:left">某一行对象</td>
+</tr>
+<tr>
+<td style="text-align:left">rows</td>
+<td style="text-align:left">call</td>
+<td style="text-align:left">“Add”</td>
+<td style="text-align:left">new Variant(row)</td>
+<td style="text-align:left">null</td>
+<td style="text-align:left">在指定行前添加一行</td>
+</tr>
+<tr>
+<td style="text-align:left">table</td>
+<td style="text-align:left">call</td>
+<td style="text-align:left">“Cell”</td>
+<td style="text-align:left">new Variant(cellRowIdx),new Variant(cellColIdx)</td>
+<td style="text-align:left">cell</td>
+<td style="text-align:left">指定单元格</td>
+</tr>
+<tr>
+<td style="text-align:left">cell</td>
+<td style="text-align:left">call</td>
+<td style="text-align:left">“Select”</td>
+<td style="text-align:left">null</td>
+<td style="text-align:left">null</td>
+<td style="text-align:left">选中指定单元格</td>
+</tr>
+<tr>
+<td style="text-align:left">selection</td>
+<td style="text-align:left">get</td>
+<td style="text-align:left">“Font”</td>
+<td style="text-align:left">null</td>
+<td style="text-align:left">font</td>
+<td style="text-align:left">得到字体对象</td>
+</tr>
+<tr>
+<td style="text-align:left">font</td>
+<td style="text-align:left">put</td>
+<td style="text-align:left">“Name”</td>
+<td style="text-align:left">new Variant(“宋体”)</td>
+<td style="text-align:left">null</td>
+<td style="text-align:left">设置字体</td>
+</tr>
+<tr>
+<td style="text-align:left">font</td>
+<td style="text-align:left">put</td>
+<td style="text-align:left">“Size”</td>
+<td style="text-align:left">new Variant(12)</td>
+<td style="text-align:left">null</td>
+<td style="text-align:left">设置字号</td>
+</tr>
+<tr>
+<td style="text-align:left">font</td>
+<td style="text-align:left">put</td>
+<td style="text-align:left">“Color”</td>
+<td style="text-align:left">color</td>
+<td style="text-align:left">null</td>
+<td style="text-align:left">设置字体颜色</td>
+</tr>
+<tr>
+<td style="text-align:left">font</td>
+<td style="text-align:left">put</td>
+<td style="text-align:left">“Bold”</td>
+<td style="text-align:left">new Variant(bold)</td>
+<td style="text-align:left">null</td>
+<td style="text-align:left">设置加粗</td>
+</tr>
+<tr>
+<td style="text-align:left">font</td>
+<td style="text-align:left">put</td>
+<td style="text-align:left">“Underline”</td>
+<td style="text-align:left">new Variant(underLine)</td>
+<td style="text-align:left">null</td>
+<td style="text-align:left">设置下划线</td>
+</tr>
+<tr>
+<td style="text-align:left">selection</td>
+<td style="text-align:left">put</td>
+<td style="text-align:left">“Text”</td>
+<td style="text-align:left">内容</td>
+<td style="text-align:left">null</td>
+<td style="text-align:left">填充内容</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>加密操作</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>目标对象</th>
+<th>操作</th>
+<th>name</th>
+<th>params</th>
+<th>return</th>
+<th>descript</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>doc</td>
+<td>get</td>
+<td>“ProtectionType”</td>
+<td>null</td>
+<td>String protectionType</td>
+<td>是否加密-1未加密</td>
+</tr>
+<tr>
+<td>doc</td>
+<td>call</td>
+<td>“Protect”</td>
+<td>new Variant(2), new Variant(true), pwd</td>
+<td>null</td>
+<td>加密</td>
+</tr>
+<tr>
+<td>doc</td>
+<td>call</td>
+<td>“Unprotect”</td>
+<td>pwd</td>
+<td>null</td>
+<td>解密</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>查找操作</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>目标对象</th>
+<th>操作</th>
+<th>name</th>
+<th>params</th>
+<th>return</th>
+<th>descript</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>word</td>
+<td>get</td>
+<td>“Selection”</td>
+<td>null</td>
+<td>selection</td>
+<td>当前光标</td>
+</tr>
+<tr>
+<td>selection</td>
+<td>call</td>
+<td>“Find”</td>
+<td>null</td>
+<td>find</td>
+<td>得到从当前光标开始的查找对象</td>
+</tr>
+<tr>
+<td>find</td>
+<td>put</td>
+<td>“Text”</td>
+<td>toFindText</td>
+<td>null</td>
+<td>设置查找内容</td>
+</tr>
+<tr>
+<td>find</td>
+<td>put</td>
+<td>“Forward”</td>
+<td>“True”</td>
+<td>null</td>
+<td>设置向前查找</td>
+</tr>
+<tr>
+<td>find</td>
+<td>put</td>
+<td>“MatchCase”</td>
+<td>“True”</td>
+<td>null</td>
+<td>设置大小写匹配</td>
+</tr>
+<tr>
+<td>find</td>
+<td>call</td>
+<td>“Execute”</td>
+<td>null</td>
+<td>Variant</td>
+<td>查找并选中</td>
+</tr>
+<tr>
+<td>selection</td>
+<td>get</td>
+<td>“Range”</td>
+<td>null</td>
+<td>range</td>
+<td>区间对象</td>
+</tr>
+<tr>
+<td>range</td>
+<td>call</td>
+<td>“SetRange”</td>
+<td>start + “”, end + “”</td>
+<td>null</td>
+<td>选中start到end</td>
+</tr>
+<tr>
+<td>range</td>
+<td>get</td>
+<td>“Text”</td>
+<td>null</td>
+<td>Variant</td>
+<td>选中区间文本</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>光标操作</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>目标对象</th>
+<th>操作</th>
+<th>name</th>
+<th>params</th>
+<th>return</th>
+<th>descript</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>word</td>
+<td>get</td>
+<td>“Selection”</td>
+<td>null</td>
+<td>selection</td>
+<td>当前光标</td>
+</tr>
+<tr>
+<td>selection</td>
+<td>put</td>
+<td>“Text”</td>
+<td>newText</td>
+<td>null</td>
+<td>替换文本</td>
+</tr>
+<tr>
+<td>selection</td>
+<td>call</td>
+<td>“MoveRight”</td>
+<td>null</td>
+<td>null</td>
+<td>光标右移</td>
+</tr>
+<tr>
+<td>selection</td>
+<td>call</td>
+<td>“MoveLeft”</td>
+<td>null</td>
+<td>null</td>
+<td>光标左移</td>
+</tr>
+<tr>
+<td>selection</td>
+<td>call</td>
+<td>“MoveUp”</td>
+<td>null</td>
+<td>null</td>
+<td>光标上移</td>
+</tr>
+<tr>
+<td>selection</td>
+<td>call</td>
+<td>“MoveDown”</td>
+<td>null</td>
+<td>null</td>
+<td>光标下移</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>段落操作</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>目标对象</th>
+<th>操作</th>
+<th>name</th>
+<th>params</th>
+<th>return</th>
+<th>descript</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>selection</td>
+<td>get</td>
+<td>“Paragraphs”</td>
+<td>null</td>
+<td>paragraphs</td>
+<td>段落对象</td>
+</tr>
+<tr>
+<td>paragraphs</td>
+<td>get</td>
+<td>“Alignment”</td>
+<td>null</td>
+<td>null</td>
+<td>对齐方式</td>
+</tr>
+<tr>
+<td>paragraphs</td>
+<td>get</td>
+<td>“LineSpacingRule”</td>
+<td>null</td>
+<td>null</td>
+<td>行距</td>
+</tr>
+<tr>
+<td>paragraphs</td>
+<td>get</td>
+<td>“LineUnitBefore”</td>
+<td>null</td>
+<td>null</td>
+<td>段前</td>
+</tr>
+<tr>
+<td>paragraphs</td>
+<td>get</td>
+<td>“LineUnitBefore”</td>
+<td>null</td>
+<td>null</td>
+<td>段后</td>
+</tr>
+<tr>
+<td>paragraphs</td>
+<td>get</td>
+<td>“CharacterUnitFirstLineIndent”</td>
+<td>null</td>
+<td>null</td>
+<td>首行缩进字符数</td>
+</tr>
+</tbody>
+</table>
+<h2 id="jacobFAQ"><a href="#jacobFAQ" class="headerlink" title="jacobFAQ"></a>jacobFAQ</h2><ul>
+<li><p>找不到jacob.dll，配置路径问题（确认jacob.dll配置正确）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Exception in thread &quot;……&quot; java.lang.UnsatisfiedLinkError: no jacob in java.library.path</div></pre></td></tr></table></figure>
+</li>
+<li><p>找不到资源文件，资源文件路径问题（查看程序中资源文件路径的设置，并检查资源文件的存放路径）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Exception in thread &quot;……&quot; com.jacob.com.ComFailException: Invoke of: Open</div></pre></td></tr></table></figure>
+</li>
+<li><p>jacob.dll或jacob.jar对应版本错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.jacob.com.ComFailException: A COM exception has been encountered:</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="VBA-Visual-Basic-for-Applications"><a href="#VBA-Visual-Basic-for-Applications" class="headerlink" title="VBA(Visual Basic for Applications)"></a>VBA(Visual Basic for Applications)</h2><p>定义：是一种Visual Basic的一种宏语言，主要能用来扩展Windows的应用程序功能，特别是Microsoft Office软件。也可说是一种应用程序视觉化的Basic Script。<br>jacob的操作大部分可以通过vba演化过来，可通过录制宏的方式得到想要的操作。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&apos;vba是解释性语言</div><div class="line">&apos;变量强制声明</div><div class="line">Option Explicit</div><div class="line">&apos; sub中包裹着待执行命令</div><div class="line">&apos; public private 访问控制符 控制函数可见性</div><div class="line">Public Sub main()</div><div class="line">    &apos;声明Integer类型变量</div><div class="line">    &apos;常用数据类型 String Date Integer Long Float Double Bool</div><div class="line">    &apos;引用类型Object</div><div class="line">    Dim length As Integer</div><div class="line">    </div><div class="line">    helloworld</div><div class="line">End Sub</div><div class="line">&apos;单引号后是注释</div><div class="line">&apos;无返回值函数声明</div><div class="line">Private Function helloworld()</div><div class="line">    &apos; MsgBox系统内置函数 执行优先级 本Module 本工程其他module非private 内置函数</div><div class="line">    MsgBox &quot;HelloWorld&quot;</div><div class="line">    Debug.Print return2</div><div class="line">End Function</div><div class="line">&apos;有返回值函数声明</div><div class="line">Private Function return2() As Long</div><div class="line">    &apos; MsgBox系统内置函数 执行优先级 本Module 本工程其他module非private 内置函数</div><div class="line">    &apos;return 的写法</div><div class="line">    return2 = 2</div><div class="line">End Function</div></pre></td></tr></table></figure></p>
+<p>##引用<br><a href="https://www.ibm.com/developerworks/cn/java/j-lo-jacob/" target="_blank" rel="external">jacob理论</a><br><a href="http://blog.sina.com.cn/s/blog_613963d10100odq2.html" target="_blank" rel="external">jacob异常</a><br><a href="https://www.baidu.com/link?url=vP_En1sS1v5FcNrafVEy7iX-NoOx2_upNLwEPmn2H0Lh1NbtGZfBE2a2Xu8SaOzZylMt0e53ToY52MR8BS3Meq&amp;wd=&amp;eqid=faa4a3d100017e9a000000025a59c973" target="_blank" rel="external">jacob讲解</a><br><a href="https://msdn.microsoft.com/en-us/VBA/Language-Reference-VBA/articles/functions-visual-basic-for-applications" target="_blank" rel="external">vba常用内置函数</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/13/获取IP/" rel="next" title="java获取IPhexo">
+                <i class="fa fa-chevron-left"></i> java获取IPhexo
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Tewinsid" />
+          <p class="site-author-name" itemprop="name">Tewinsid</p>
+           
+              <p class="site-description motion-element" itemprop="description">我的个人博客</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jacob使用准备"><span class="nav-number">2.</span> <span class="nav-text">jacob使用准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jacob常用类及方法"><span class="nav-number">3.</span> <span class="nav-text">jacob常用类及方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操纵word常用操作"><span class="nav-number">4.</span> <span class="nav-text">操纵word常用操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jacobFAQ"><span class="nav-number">5.</span> <span class="nav-text">jacobFAQ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VBA-Visual-Basic-for-Applications"><span class="nav-number">6.</span> <span class="nav-text">VBA(Visual Basic for Applications)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tewinsid</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
