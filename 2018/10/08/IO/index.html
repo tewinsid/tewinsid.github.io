@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="java IO API 总结">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IO">
+<meta property="og:url" content="http://yoursite.com/2018/10/08/IO/index.html">
+<meta property="og:site_name" content="Tewinsid Code">
+<meta property="og:description" content="java IO API 总结">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/image/java-IO-IN.jpg">
+<meta property="og:image" content="http://yoursite.com/image/java-IO-OUT.jpg">
+<meta property="og:image" content="http://yoursite.com/image/java-IO-Reader.png">
+<meta property="og:image" content="http://yoursite.com/image/java-IO-Writer.png">
+<meta property="og:image" content="https://www.ibm.com/developerworks/cn/java/j-lo-javaio/image013.jpg">
+<meta property="og:image" content="https://www.ibm.com/developerworks/cn/java/j-lo-javaio/image011.jpg">
+<meta property="og:updated_time" content="2018-10-10T08:29:56.149Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IO">
+<meta name="twitter:description" content="java IO API 总结">
+<meta name="twitter:image" content="http://yoursite.com/image/java-IO-IN.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/08/IO/"/>
+
+
+
+
+
+  <title>IO | Tewinsid Code</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tewinsid Code</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/08/IO/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tewinsid">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tewinsid Code">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">IO</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-08T19:37:10+08:00">
+                2018-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/10/08/IO/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/10/08/IO/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>java IO API 总结</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><p>在java API中，可以从其中读入一个字节序列的对象流称作输入流，而可以向其中写入一个字节序列的对象称作输出流。这些字节序列的来源和目的地可以是文件，网络连接，内存快。<br>java的IO操作类在包java.io下，这些类大概可以分成四组，分别是：</p>
+<ol>
+<li>基于字节操作的 I/O 接口：InputStream 和 OutputStream</li>
+<li>基于字符操作的 I/O 接口：Writer 和 Reader</li>
+<li>基于磁盘操作的 I/O 接口：File</li>
+<li>基于网络操作的 I/O 接口：Socket</li>
+</ol>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
+<li>流：代表任何有能力产出数据的数据源对象或者是有能力接受数据的接收端对象，流屏蔽了实际的I/O设备中处理数据的细节</li>
+<li>装饰模式:java IO api中使用装饰的方式实现对流对象的动态扩展</li>
+</ul>
+<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><h3 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h3><h4 id="基于字节的IO类图"><a href="#基于字节的IO类图" class="headerlink" title="基于字节的IO类图"></a>基于字节的IO类图</h4><ul>
+<li><p>输入<br><img src="/image/java-IO-IN.jpg" alt="java io in"></p>
+</li>
+<li><p>输出<br><img src="/image/java-IO-OUT.jpg" alt="java io in"></p>
+</li>
+</ul>
+<h4 id="基于字符的IO类图"><a href="#基于字符的IO类图" class="headerlink" title="基于字符的IO类图"></a>基于字符的IO类图</h4><ul>
+<li><p>输入<br><img src="/image/java-IO-Reader.png" alt="java io in"></p>
+</li>
+<li><p>输出<br><img src="/image/java-IO-Writer.png" alt="java io in"></p>
+</li>
+</ul>
+<h4 id="字节字符的转化接口"><a href="#字节字符的转化接口" class="headerlink" title="字节字符的转化接口"></a>字节字符的转化接口</h4><ul>
+<li><p>输出流转换接口<br><img src="https://www.ibm.com/developerworks/cn/java/j-lo-javaio/image013.jpg" alt="outputStreamWriter"></p>
+</li>
+<li><p>输入流转换接口<br><img src="https://www.ibm.com/developerworks/cn/java/j-lo-javaio/image011.jpg" alt="inputStreamReader"></p>
+</li>
+</ul>
+<h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><h4 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h4><h5 id="InputStream"><a href="#InputStream" class="headerlink" title="InputStream"></a>InputStream</h5><p>抽象类 装饰模式中的抽象构建，一切字节输入流的父对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">available():int//返回可读取的字节数</div><div class="line">close():void</div><div class="line">mark(int):void//可以在流中标记位置，reset回退到标记位置</div><div class="line">markSupported():bollean</div><div class="line">read():int</div><div class="line">read(byte[]):int</div><div class="line">read(byte[],int,int):int</div><div class="line">reset():void</div><div class="line">skip(long):void//从输入流中跳过并丢弃n字节</div></pre></td></tr></table></figure></p>
+<h5 id="ByteArrayInputStream"><a href="#ByteArrayInputStream" class="headerlink" title="ByteArrayInputStream"></a>ByteArrayInputStream</h5><p>继承InputStream，作为装饰模式的具体构件。<br>适配模式：适配数组到InputStream（对象适配）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">//构造</div><div class="line">ByteArrayInputStream(byte[])</div><div class="line">ByteArrayInputStream(byte[], int, int)</div><div class="line">//域</div><div class="line">pos当前读取下标</div><div class="line">mark标记下标</div><div class="line">count可用长度</div><div class="line">byf[] 被适配数组</div><div class="line">//实现InputStream中的抽象方法</div><div class="line">synchronized available():int</div><div class="line">close():void//无操作</div><div class="line">mark(int):void//内部通过记录mark的数组下标实现</div><div class="line">reset():vodi//把pos重置到mark</div><div class="line">markSupport():bollean//true</div><div class="line">synchronized read():int//读取字节&amp;0xff</div><div class="line">synchronized read(byte[], int, int)</div><div class="line">synchronized skip(long):void</div></pre></td></tr></table></figure></p>
+<h5 id="FileDescriptor"><a href="#FileDescriptor" class="headerlink" title="FileDescriptor"></a>FileDescriptor</h5><p>文件描述符</p>
+<ol>
+<li>每个进程都有一个映射文件物理地址的表格（0标准输入，1标准输出，2标准错误，其余为进程打开过的文件地址），fileDescriptor相当于表格中的某一行数据的对应对象。</li>
+<li>子进程继承父进程的地址表格（父进程调用fork生成子进程）</li>
+<li>andorid binder机制，a进程把文件的fileDescriptor发送给b进程，不通过集成实现。</li>
+<li>一个打开的文件通过唯一的fileDescriptor引用，fileDescriptor是打开文件的元数据到文件物理地址的映射，在linux系统冲成为fileDescriptor，文件描述符使用一个整数表示（C语言中用int，），简写为fd</li>
+<li>内核为每一个进程维护一个打开文件的映射文件物理地址表格，称为文件表（File table),索引是fd，数据为打开文件的信息（文件元数据，文件读取模式，指向文件inode的指针），类似与一个Map结构，子进程会默认获取父进程的File table的深拷贝，所以进程之间的file table互不影响，所以父进程子进程之间可以使用fd共享文件。</li>
+<li>fd操作实际是操作系统内核api的调用。</li>
+<li>java中的FileDescriptor类<br>a. fileDescriptor提供了一个底层机器级别的数据结构，以代表打开的文件，或者socket或其他输入源<br>b. 在应用中不应该创建fileDescriptor对象，fileDescriptor对象主要通过fileInputStream和FileOutputStream间接使用（适配）<br>c. 在FileDescriptor中通过静态代码快和静态变量初始化标准IO<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">0 标准输入</div><div class="line">1 标准输出</div><div class="line">2 标准错误</div><div class="line">//构造</div><div class="line">FileDescriptor()//初始化fd置位-1</div><div class="line">FileDescriptor(int)//初始化fd置位传入值</div><div class="line">//域</div><div class="line">parent:Closeable</div><div class="line">otherParents:List&lt;Closable&gt;</div><div class="line">closed:boolean//本FD对应的entry是否关闭</div><div class="line">err:FileDescriptor//标准错误</div><div class="line">in:FileDescriptor//标准输入</div><div class="line">out:FileDescriptor//标准输出</div><div class="line">fd:int//当前FileDescriptor对应的entry的fd值</div><div class="line">//方法</div><div class="line">attach(Closeable):void//记录传入对象到parent或者otherParents</div><div class="line">closeAll:void</div><div class="line">sync:void//同步所有的缓存中的数据到底层设备上</div><div class="line">valid:boolean//判断FileDescriptor是否和entry绑定</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h5 id="FileInputStream"><a href="#FileInputStream" class="headerlink" title="FileInputStream"></a>FileInputStream</h5><p>继承InputStream，作为装饰器的具体构件<br>适配FileDescriptor到InputStream<br>打开文件前会进行权限检查抛出SecurityException<br>若fd对应文件不存在或者不能打开（目录）抛出FileNotFoundException<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">//构造 创建与文件系统真是文件相关联的一个connection，并创建一个fd代表file connection</div><div class="line">FileInputStream(File)//新建fd</div><div class="line">FileInputStream(FileDescriptor)//fd是传入的（已有的connection）</div><div class="line">FileInputStream(String)//调用第一个</div><div class="line">//域</div><div class="line">channel:FileChannel//nio 代表文件</div><div class="line">path:Strng</div><div class="line">closeLock:Object//TODO</div><div class="line">closed:boolean</div><div class="line">//方法</div><div class="line">//实现InputStream的抽象方法 不支持mark，其他方法均通过调用native方法实现</div><div class="line">//新增方法</div><div class="line">getChannel:FileChannel</div><div class="line">    channel = FileChannelImpl.open(fd, path, true, false, this);</div><div class="line">getFD:FileDescriptor</div><div class="line">private open//调用native open0打开文件  FileNotFoundException</div></pre></td></tr></table></figure></p>
+<h5 id="File"><a href="#File" class="headerlink" title="File"></a>File</h5><p>可代表文件或文件夹<br><a href="http://www.cnblogs.com/skywang12345/p/io_08.html" target="_blank" rel="external">http://www.cnblogs.com/skywang12345/p/io_08.html</a></p>
+<h5 id="FilterInputStream"><a href="#FilterInputStream" class="headerlink" title="FilterInputStream"></a>FilterInputStream</h5><p>继承与InputStream抽象类并内置一个InputStream域，通过调用域变量的方法实现继承来的抽象方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//构造</div><div class="line">FilterInputStream(InputStream)</div><div class="line">//实现InputStream抽象方法</div></pre></td></tr></table></figure></p>
+<h5 id="BufferedInputStream"><a href="#BufferedInputStream" class="headerlink" title="BufferedInputStream"></a>BufferedInputStream</h5><p>System.in 是一个BufferedInputStream<br>继承于FilterInputStream，是装饰模式的具体装饰类，通过内置InputStream域对象，并对域对象对应方法进行扩展实现动态扩展，支持mark<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//构造</div><div class="line">FilterInputStream(InputStream, int)//size</div><div class="line">//</div><div class="line">private fill():void//将缓冲填满</div></pre></td></tr></table></figure></p>
+<h5 id="DataInputStream"><a href="#DataInputStream" class="headerlink" title="DataInputStream"></a>DataInputStream</h5><p>继承于FilterInputStream实现了DataInput接口（），具体装饰类，内置InputStream域对象，支持以机器无关的方式从底层输入流中读取基本java类型数据。<br><a href="https://docs.oracle.com/javase/7/docs/api/java/io/DataInput.html" target="_blank" rel="external">https://docs.oracle.com/javase/7/docs/api/java/io/DataInput.html</a></p>
+<h5 id="PrintStream"><a href="#PrintStream" class="headerlink" title="PrintStream"></a>PrintStream</h5><p>System.out 和 System.err是一个PrintStream<br><a href="http://www.cnblogs.com/skywang12345/p/io_16.html" target="_blank" rel="external">http://www.cnblogs.com/skywang12345/p/io_16.html</a></p>
+<h4 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h4><p>（个人理解，如有问题，请校正）</p>
+<ol>
+<li>Reader和InputStream都是定义字符流，字节流通用接口的抽象类</li>
+<li>定义filter<em>主要是为了符合开闭原则，允许通过继承filter</em>实现具体装饰类的方式动态扩展具体实现类的功能</li>
+<li>字符流在底层实现（写入硬盘，网络）上实际还是基于字节流的，需要通过InputStreamReader，OutputSteamWriter适配对应的字节流到字符流</li>
+<li>我理解的整个字符的api除了CharArray[Reader|Writer]、Piped[Reader|Writer]、String[Reader|Writer]等不依赖与操作系统底层支持的api，其他的接口都相当对字节流的一个装饰</li>
+<li>所以Buffered[Reader|Writer]、InputStream[Reader|Writer]、PrintWriter不继承于Filter[Reader|Writer]，因为[Reader|Writer]本身就是一个抽象装饰类</li>
+<li>继承于FilterReader的PushBackReader对5中隐形装饰进行二次装饰提供回退操作。</li>
+</ol>
+<h5 id="Reader"><a href="#Reader" class="headerlink" title="Reader"></a>Reader</h5><p>抽象类，装饰模式，实现了Readable和Closeable接口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Reader()</div><div class="line">Reader(Object)//传入锁对象</div><div class="line">//</div><div class="line">close():void</div><div class="line">mark(int):void</div><div class="line">markSupported():bollean</div><div class="line">read():int//读取一个字符基于1方法</div><div class="line">read(char[]):int//读取一个字符数组，基于1方法</div><div class="line">abstract read(char[], int, int):int//1方法，从底层特定位置读取指定长度字符到传入字符数组中</div><div class="line">read(java.nio.CharBuffer):int//向charBuffer中读取字符</div><div class="line">ready():bollean</div><div class="line">reset():void</div><div class="line">skip(long):long</div><div class="line">//域</div><div class="line">protected Object lock</div><div class="line">private static final int maxSkipBufferSize 8192</div><div class="line">private char[] skipBuffer</div></pre></td></tr></table></figure></p>
+<h5 id="BufferedReader"><a href="#BufferedReader" class="headerlink" title="BufferedReader"></a>BufferedReader</h5><p>继承于Reader，为其他reader提供缓存功能<br>具体api详见J2SE api 文档</p>
+<h5 id="CharArrayReader"><a href="#CharArrayReader" class="headerlink" title="CharArrayReader"></a>CharArrayReader</h5><p>继承于Reader，适配char[]到Reader<br>具体api详见J2SE api 文档</p>
+<h5 id="StreamDecoder"><a href="#StreamDecoder" class="headerlink" title="StreamDecoder"></a>StreamDecoder</h5><p>继承于Reader，为InputStream增加编码转换功能<br>具体api详见J2SE api 文档</p>
+<h5 id="InputStreamReader"><a href="#InputStreamReader" class="headerlink" title="InputStreamReader"></a>InputStreamReader</h5><p>继承于Reader，适配StreamDecoder到Reader<br>具体api详见J2SE api 文档</p>
+<h5 id="Writer"><a href="#Writer" class="headerlink" title="Writer"></a>Writer</h5><p>与Reader类似，不详细展开<br>具体api详见J2SE api 文档</p>
+<h4 id="RandomAccessFile"><a href="#RandomAccessFile" class="headerlink" title="RandomAccessFile"></a>RandomAccessFile</h4><ul>
+<li>适用于大小已知的记录组成的文件</li>
+<li>RandomAccessFile是独立的没有继承，实现了DataOutput, DataInput, Closeable接口</li>
+<li>支持在文件中前后移动</li>
+<li>本质上来说RandomAccessFile相当于把DataInputStream和DataOutputStream结合起来使用</li>
+<li>只有RandomAccessFile支持搜索方法，并且只适用于文件，</li>
+<li>在1.4以后，RandomAccessFile中的大部分功能，由nio存储映射文件所取代</li>
+<li>同时支持读写</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">RandomAccessFile(File, String)//第二个参数mode &quot;r&quot;.&quot;rw&quot;</div><div class="line">RandomAccessFile(String, String)</div><div class="line">//</div><div class="line">native getFilePointer():long//获得当前所处的文档位置</div><div class="line">private native seek(long):void</div><div class="line">seek(long):void//在文件内移动到新的位置</div><div class="line">native length():long//获得文档大小</div></pre></td></tr></table></figure>
+<h3 id="编码问题"><a href="#编码问题" class="headerlink" title="编码问题"></a>编码问题</h3><p>字节流是没有编码问题的，只有当二进制的字节流转化为字符流时需要通过特定编码方式编码、解码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//使用特定编码格式获取Reader</div><div class="line">Reader reader = new InputStreamReader(new FileInputStream(new File(inputFilePath)), &quot;UTF-8&quot;);</div><div class="line">//使用特定编码格式获取Writer</div><div class="line">Writer writer = new OutputStreamWriter(new FileOutputStream(new File(outputFilePath)), &quot;UTF-8&quot;);</div></pre></td></tr></table></figure>
+<h3 id="推荐使用"><a href="#推荐使用" class="headerlink" title="推荐使用"></a>推荐使用</h3><ul>
+<li>当使用readLine()是应使用Buffered*流进行操作</li>
+<li>PrintWriter可以接受Writer或者OutputStream，支持格式化输出操作</li>
+</ul>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>读取写入字符 字节流-》转换接口-》字符流<br>使用模板方法模式简化流的close操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">interface ClosableProcessor &#123;</div><div class="line">    void process(Closeable[] c) throws IOException;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class ClosableTemplete &#123;</div><div class="line">    public void doProcess(Closeable[] c, ClosableProcessor templete) &#123;</div><div class="line">        try &#123;</div><div class="line">            templete.process(c);</div><div class="line">        &#125; catch (FileNotFoundException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125; catch (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125; finally &#123;</div><div class="line">            int i;</div><div class="line">            for (i = 0; i &lt; c.length; i++) &#123;</div><div class="line">                try &#123;</div><div class="line">                    c[i].close();</div><div class="line">                &#125; catch (Exception e) &#123;</div><div class="line">                    e.printStackTrace();</div><div class="line">                    continue;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="以字节为单位读取文件，常用于二进制文件，图片，音频，视频，网络流"><a href="#以字节为单位读取文件，常用于二进制文件，图片，音频，视频，网络流" class="headerlink" title="以字节为单位读取文件，常用于二进制文件，图片，音频，视频，网络流"></a>以字节为单位读取文件，常用于二进制文件，图片，音频，视频，网络流</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">String inputFilePath = &quot;&quot;;</div><div class="line">String outputFilePath = &quot;&quot;;</div><div class="line">Closeable[] c = &#123;new FileInputStream(new File(inputFilePath)), new FileOutputStream(new File(outputFilePath))&#125;;</div><div class="line">new CloseableTemplete().doProcess(c, new CloseableProcessor() &#123;</div><div class="line">    @Override</div><div class="line">    public void process(Closeable[] c) throws IOException &#123;</div><div class="line">        InputStream in = (InputStream) c[0];</div><div class="line">        OutputStream out = (OutputStream) c[1];</div><div class="line">        int len = 0;</div><div class="line">        byte[] temp = new byte[100];</div><div class="line">        while ((len = in.read(temp)) != -1) &#123;</div><div class="line">            out.write(temp, 0, len);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4 id="以字符为单位读取文件，常用于文本数字类型的文件。"><a href="#以字符为单位读取文件，常用于文本数字类型的文件。" class="headerlink" title="以字符为单位读取文件，常用于文本数字类型的文件。"></a>以字符为单位读取文件，常用于文本数字类型的文件。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">String inputFilePath = &quot;&quot;;</div><div class="line">String outputFilePath = &quot;&quot;;</div><div class="line">Closeable[] c = &#123;new InputStreamReader(new FileInputStream(inputFilePath)), new OutputStreamWriter(new FileOutputStream(outputFilePath))&#125;;</div><div class="line">new CloseableTemplete().doProcess(c, new CloseableProcessor() &#123;</div><div class="line">    @Override</div><div class="line">    public void process(Closeable[] c) throws IOException &#123;</div><div class="line">        Reader reader = (Reader) c[0];</div><div class="line">        Writer writer = (Writer) c[1];</div><div class="line">        int tempChar = 0;</div><div class="line">        byte[] temp = new byte[100];</div><div class="line">        while ((tempChar = reader.read()) != -1) &#123;</div><div class="line">            if ((char) tempChar != &apos;\n&apos;) &#123;</div><div class="line">                writer.write((char) tempChar);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4 id="以行为单位读取文件"><a href="#以行为单位读取文件" class="headerlink" title="以行为单位读取文件"></a>以行为单位读取文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">String inputFilePath = &quot;&quot;;</div><div class="line">String outputFilePath = &quot;&quot;;</div><div class="line">Closeable[] c = &#123;new BufferedReader(new InputStreamReader(new FileInputStream(inputFilePath)))&#125;;</div><div class="line">new CloseableTemplete().doProcess(c, new CloseableProcessor() &#123;</div><div class="line">    @Override</div><div class="line">    public void process(Closeable[] c) throws IOException &#123;</div><div class="line">        BufferedReader reader = (Reader) c[0];</div><div class="line">        String tempString = &quot;&quot;;</div><div class="line">        while ((tempString = reader.readLine()) != null) &#123;</div><div class="line">            //TODO</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.ibm.com/developerworks/cn/java/j-lo-javaio/index.html" target="_blank" rel="external">非常重要的资料</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/18/FAQ/" rel="next" title="FAQ">
+                <i class="fa fa-chevron-left"></i> FAQ
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/10/08/IO/"
+           data-title="IO" data-url="http://yoursite.com/2018/10/08/IO/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Tewinsid" />
+          <p class="site-author-name" itemprop="name">Tewinsid</p>
+           
+              <p class="site-description motion-element" itemprop="description">我的个人博客</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#是什么"><span class="nav-text">是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-text">概念</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何使用"><span class="nav-text">如何使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类图"><span class="nav-text">类图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基于字节的IO类图"><span class="nav-text">基于字节的IO类图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于字符的IO类图"><span class="nav-text">基于字符的IO类图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字节字符的转化接口"><span class="nav-text">字节字符的转化接口</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#API"><span class="nav-text">API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#字节流"><span class="nav-text">字节流</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#InputStream"><span class="nav-text">InputStream</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ByteArrayInputStream"><span class="nav-text">ByteArrayInputStream</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FileDescriptor"><span class="nav-text">FileDescriptor</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FileInputStream"><span class="nav-text">FileInputStream</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#File"><span class="nav-text">File</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FilterInputStream"><span class="nav-text">FilterInputStream</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#BufferedInputStream"><span class="nav-text">BufferedInputStream</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DataInputStream"><span class="nav-text">DataInputStream</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PrintStream"><span class="nav-text">PrintStream</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符流"><span class="nav-text">字符流</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Reader"><span class="nav-text">Reader</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#BufferedReader"><span class="nav-text">BufferedReader</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CharArrayReader"><span class="nav-text">CharArrayReader</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#StreamDecoder"><span class="nav-text">StreamDecoder</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#InputStreamReader"><span class="nav-text">InputStreamReader</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Writer"><span class="nav-text">Writer</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RandomAccessFile"><span class="nav-text">RandomAccessFile</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编码问题"><span class="nav-text">编码问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推荐使用"><span class="nav-text">推荐使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例子"><span class="nav-text">例子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#以字节为单位读取文件，常用于二进制文件，图片，音频，视频，网络流"><span class="nav-text">以字节为单位读取文件，常用于二进制文件，图片，音频，视频，网络流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以字符为单位读取文件，常用于文本数字类型的文件。"><span class="nav-text">以字符为单位读取文件，常用于文本数字类型的文件。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以行为单位读取文件"><span class="nav-text">以行为单位读取文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tewinsid</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"your-duoshuo-shortname"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
