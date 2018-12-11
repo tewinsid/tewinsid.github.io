@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="java web," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="是什么 字符编码：字符集中的字符编码为指定集合中某一对象（例如：比特模式、自然数序列、8位组或者电脉冲），以便文本在计算机中存储和通过通信网络的传递 为什么要编码：计算机存储、传输的都是二进制流，显示需要将二进制流按照字符编码集进行转化，才能显示。  涉及知识点常用编码ASCII ASCII字符集：主要包括控制字符（回车键、退格、换行键等）；可显示字符（英文大小写字符、阿拉伯数字和西文符号。 AS">
+<meta name="keywords" content="java web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web编码">
+<meta property="og:url" content="http://yoursite.com/2018/12/11/web编码/index.html">
+<meta property="og:site_name" content="Tewinsid Code">
+<meta property="og:description" content="是什么 字符编码：字符集中的字符编码为指定集合中某一对象（例如：比特模式、自然数序列、8位组或者电脉冲），以便文本在计算机中存储和通过通信网络的传递 为什么要编码：计算机存储、传输的都是二进制流，显示需要将二进制流按照字符编码集进行转化，才能显示。  涉及知识点常用编码ASCII ASCII字符集：主要包括控制字符（回车键、退格、换行键等）；可显示字符（英文大小写字符、阿拉伯数字和西文符号。 AS">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/image/coding1.png">
+<meta property="og:image" content="http://yoursite.com/image/web请求流程.png">
+<meta property="og:image" content="http://yoursite.com/image/url.png">
+<meta property="og:updated_time" content="2018-12-11T09:15:26.528Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="web编码">
+<meta name="twitter:description" content="是什么 字符编码：字符集中的字符编码为指定集合中某一对象（例如：比特模式、自然数序列、8位组或者电脉冲），以便文本在计算机中存储和通过通信网络的传递 为什么要编码：计算机存储、传输的都是二进制流，显示需要将二进制流按照字符编码集进行转化，才能显示。  涉及知识点常用编码ASCII ASCII字符集：主要包括控制字符（回车键、退格、换行键等）；可显示字符（英文大小写字符、阿拉伯数字和西文符号。 AS">
+<meta name="twitter:image" content="http://yoursite.com/image/coding1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/11/web编码/"/>
+
+
+
+
+
+  <title>web编码 | Tewinsid Code</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tewinsid Code</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/11/web编码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tewinsid">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tewinsid Code">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">web编码</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-11T16:03:54+08:00">
+                2018-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/11/web编码/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/12/11/web编码/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><ul>
+<li>字符编码：字符集中的字符编码为指定集合中某一对象（例如：比特模式、自然数序列、8位组或者电脉冲），以便文本在计算机中存储和通过通信网络的传递</li>
+<li>为什么要编码：计算机存储、传输的都是二进制流，显示需要将二进制流按照字符编码集进行转化，才能显示。<br><img src="/image/coding1.png" alt="java io in"></li>
+</ul>
+<h2 id="涉及知识点"><a href="#涉及知识点" class="headerlink" title="涉及知识点"></a>涉及知识点</h2><h3 id="常用编码"><a href="#常用编码" class="headerlink" title="常用编码"></a>常用编码</h3><h4 id="ASCII"><a href="#ASCII" class="headerlink" title="ASCII"></a>ASCII</h4><ul>
+<li>ASCII字符集：主要包括控制字符（回车键、退格、换行键等）；可显示字符（英文大小写字符、阿拉伯数字和西文符号。</li>
+<li>ASCII 编码：用一个字节的低 7 位表示，0~31 是控制字符如换行回车删除等；32~126 是打印字符；ASCII的最大缺点是只能解决了部份西欧语言的显示问题，但对更多其他语言依然无能为力</li>
+</ul>
+<h4 id="I字ISO-8859-X"><a href="#I字ISO-8859-X" class="headerlink" title="I字ISO-8859-X"></a>I字ISO-8859-X</h4><ul>
+<li>ISO-8859-X 字符集：扩展的 ASCII 字符集，包括 ISO-8859-1 ~ ISO-8859-15，涵盖了大多数西欧语言字符和希腊语。</li>
+<li>ISO-8859-1 编码：用 8 位表示一个字符，总共能表示 256 个字符，但还是单字节编码，不能对双字节如中日韩等进行编码。</li>
+</ul>
+<h4 id="GBXXXX"><a href="#GBXXXX" class="headerlink" title="GBXXXX"></a>GBXXXX</h4><h5 id="GB2312-编码"><a href="#GB2312-编码" class="headerlink" title="GB2312 编码"></a>GB2312 编码</h5><p>它的全称是《信息交换用汉字编码字符集 基本集》，它是双字节编码，每个汉字及符号以两个字节来表示。第一个字节称为”高位字节”（也称”区字节）”，第二个字节称为”低位字节”（也称”位字节”）。<br>总的编码范围是 A1-F7，其中从 A1-A9 是符号区，总共包含 682 个符号，从 B0-F7 是汉字区，它所收录的汉字已经覆盖中国大陆 99.75%的使用频率。对于人名、古汉语等方面出现的罕用字，GB2312 不能处理，这导致了后来GBK及GB 18030汉字字符集的出现。</p>
+<h5 id="GBK-编码"><a href="#GBK-编码" class="headerlink" title="GBK 编码"></a>GBK 编码</h5><p>全称叫《汉字内码扩展规范》，是在 GB2312-80 标准基础上的内码扩展规范，使用了双字节编码方案，其编码范围从 8140 至 FEFE（剔除 xx7F），共 23940 个码位，共收录了 21003 个汉字，完全兼容 GB2312-80 标准，支持国际标准 ISO/IEC10646-1 和国家标准 GB13000-1 中的全部中日韩汉字，并包含了 BIG5 编码中的所有汉字。</p>
+<h5 id="GB18030-编码"><a href="#GB18030-编码" class="headerlink" title="GB18030 编码"></a>GB18030 编码</h5><p>GB18030-2005《信息技术中文编码字符集》是我国自主研制的以汉字为主并包含多种我国少数民族文字（如藏、蒙古、傣、彝、朝鲜、维吾尔文等）的超大型中文编码字符集强制性标准，其中收入汉字 70000 余个，解决了中文、日文、朝鲜语等的编码，兼容 GBK。<br>采用变长字节表示即单字节、双字节和四字节三种方式对字符编码。可表示27484个文字</p>
+<h4 id="Big5"><a href="#Big5" class="headerlink" title="Big5"></a>Big5</h4><p>Big5 编码： 适用于台湾、香港地区的一个繁体字编码方案。<br>使用了双八码存储方法，以两个字节来安放一个字，第一个字节称为”高位字节”，第二个字节称为”低位字节。</p>
+<h4 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h4><h5 id="UTF-8"><a href="#UTF-8" class="headerlink" title="UTF-8"></a>UTF-8</h5><p>采用变长字节 (1 ASCII, 2 希腊字母, 3 汉字, 4 平面符号) 表示，在网络传输中即使错了一个字节，不影响其他字节；存储效率比较高，适用于拉丁字符较多的场合以节省空间，UTF-8 没有字节顺序问题，所以 UTF-8 适合传输和通信。</p>
+<h5 id="UTF-16"><a href="#UTF-16" class="headerlink" title="UTF-16"></a>UTF-16</h5><p>从先前的固定宽度的 16 位编码（UCS-2）发展而来的，能够对 Unicode 的所有 1,112,064 个有效 code point 进行编码。 其编码方式是可变长度的，因为 code point 是用一个或两个 16 位代码单元编码的。在 UTF-16 文件的开头，会放置一个 U+FEFF 字符作为 Byte Order Mark（BOM）：UTF-16LE（小端序）以 FF FE 代表，UTF-16BE（大端序）以 FE FF 代表，以显示这个文字档案是以 UTF-16 编码。UTF-16 比起 UTF-8，好处在于大部分字符都以固定长度的字节 (2 字节) 储存，但 UTF-16 却无法兼容于 ASCII 编码，实际使用也比较少。</p>
+<h5 id="UTF-32-或-UCS-4"><a href="#UTF-32-或-UCS-4" class="headerlink" title="UTF-32(或 UCS-4)"></a>UTF-32(或 UCS-4)</h5><p>对每一个 Unicode 码点使用 4 字节进行编码，其它的 Unicode 编码方式则使用不定长度编码。就空间而言，UTF-32 是非常没有效率的。尤其非基本多文种平面的字符在大部分文件中通常很罕见，以致于它们通常被认为不存在占用空间大小的讨论，使得 UTF-32 通常会是其它编码的二到四倍。虽然每一个码位使用固定长定的字节看似方便，它并不如其它 Unicode 编码使用得广泛。</p>
+<h3 id="涉及流程"><a href="#涉及流程" class="headerlink" title="涉及流程"></a>涉及流程</h3><p><img src="/image/web请求流程.png" alt="java io in"></p>
+<h4 id="浏览器处理"><a href="#浏览器处理" class="headerlink" title="浏览器处理"></a>浏览器处理</h4><h5 id="URI编码（含有非ASCII字符）"><a href="#URI编码（含有非ASCII字符）" class="headerlink" title="URI编码（含有非ASCII字符）"></a>URI编码（含有非ASCII字符）</h5><p><img src="/image/url.png" alt="java io in"></p>
+<ul>
+<li>URI包括两部分queryString和其他，提交方式包含两种post和get</li>
+<li>浏览器根据header中的Content-Type中指定的编码形式对表单中的数据进行编码</li>
+<li>URI规定：只有字母和数字[0-9a-zA-Z]、一些特殊符号”$-_.+!*’(),”[不包括双引号]、以及某些保留字，才可以不经过编码直接用于URL</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Item</th>
+<th style="text-align:left">get</th>
+<th style="text-align:left">post</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">queryString</td>
+<td style="text-align:left">根据Content-Type编码</td>
+<td style="text-align:left">放到body里提交根据Content-Type编码</td>
+</tr>
+<tr>
+<td style="text-align:left">pathInfo</td>
+<td style="text-align:left">浏览器决定</td>
+<td style="text-align:left">浏览器决定</td>
+</tr>
+</tbody>
+</table>
+<h5 id="Content-Type设置"><a href="#Content-Type设置" class="headerlink" title="Content-Type设置"></a>Content-Type设置</h5><p>html中使用以下设置Content-Tyep<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=utf-8"</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h5 id="header编码"><a href="#header编码" class="headerlink" title="header编码"></a>header编码</h5><p>必然是ISO-8859-1 不能包含非ASCII字符</p>
+<h5 id="body编解码"><a href="#body编解码" class="headerlink" title="body编解码"></a>body编解码</h5><p>body中的数据根据Content-Type中指定的字符集进行编码，如果不指定默认ISO-8859-1</p>
+<h5 id="规避不同浏览器问题"><a href="#规避不同浏览器问题" class="headerlink" title="规避不同浏览器问题"></a>规避不同浏览器问题</h5><p>通过javaScript进行encodeURI()  encodeURIComponent()对url中非ASCII字符进行显示编码</p>
+<h4 id="服务器处理"><a href="#服务器处理" class="headerlink" title="服务器处理"></a>服务器处理</h4><h5 id="URI解码（GET含有非ASCII字符）"><a href="#URI解码（GET含有非ASCII字符）" class="headerlink" title="URI解码（GET含有非ASCII字符）"></a>URI解码（GET含有非ASCII字符）</h5><p>tomcat 在server.xml中进行配置 tomcat8之后UTF-8，之前ISO-8859-1</p>
+<p><connector uriencoding="UTF-8">  对应pathInfo解码<br>useBodyEncodingForURI             对应queryString解码</connector></p>
+<h5 id="配置filte"><a href="#配置filte" class="headerlink" title="配置filte"></a>配置filte</h5><p>spring有支持，实际上设置了以下两个值<br>request.setCharacterEncoding(encoding);<br>response.setCharacterEncoding(encoding);</p>
+<h5 id="手动设置content-Type"><a href="#手动设置content-Type" class="headerlink" title="手动设置content-Type"></a>手动设置content-Type</h5><p>显示对response进行配置，与浏览器协商字符集<br>response.setContentType(“text/plain; charset=utf-8”)<br>response.setCharacterEncoding(“charset=utf-8”);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">请求头</div><div class="line">Content-type：application/x-www-form-urlencoded; charset=utf-8    请求体的MIME类型 （用于POST和PUT请求中）</div><div class="line">返回头    </div><div class="line">Content-Type:  当前内容的MIME类型    Content-Type: text/html; charset=utf-8</div><div class="line">如果返回头没有指定content-type浏览器会按照</div><div class="line">&lt;meta HTTP-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=GBK&quot; /&gt;中的charset进行解码</div><div class="line">仍然没有定义使用默认编码格式解码</div></pre></td></tr></table></figure>
+<h4 id="java代码"><a href="#java代码" class="headerlink" title="java代码"></a>java代码</h4><ul>
+<li>String类中存放的是UNICODE（UTF-16）编码</li>
+<li>String s=new String(buffer,”utf-8”); 按照指定编码格式编码</li>
+<li>s.getBytes(“gbk”)按照指定编码格式解码</li>
+<li>OutputStreamWriter，InputStreamReader可进行编码格式的指定</li>
+<li>java模拟请求中需要对uri中的中文使用URLEncoder.encode(） 进行编码</li>
+</ul>
+<h4 id="jsp相关"><a href="#jsp相关" class="headerlink" title="jsp相关"></a>jsp相关</h4><p>jsp会被处理为servlet，然后拼装html页面返回前台，jsp中通过以下标签配置content-Type，pageEncoding表示jsp文件编码<br><figure class="highlight jsp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset="</span>GB18030<span class="string">" pageEncoding="</span>UTF-<span class="number">8</span><span class="string">"%&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="请求流程"><a href="#请求流程" class="headerlink" title="请求流程"></a>请求流程</h4><h5 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h5><ol>
+<li>URL 中 pathInfo 和 queryString 如果含有中文等非 ASCII 字符，则浏览器会对它们进行 URLEncode，编码成为 16 进制，然后从右到左，取 4 位(不足 4 位直接处理)，每 2 位做一位，前面加上%，编码成%XY 格式</li>
+<li>URL 中的 PathInfo 和 QueryString 字符串的编码和解码是由浏览器和应用服务器的配置决定，且两者编码方式不同，queryString可通过Content-Type配置</li>
+<li>应用服务器端对 Get 请求方式解码中 pathInfo 和 queryString 的设定是不同的</li>
+<li>比如 Tomcat 服务器一般在 server.xml 中设定的，pathInfo 部分进行解码的字符集是在 connector 的 <connector uriencoding="UTF-8"> 中定义的</connector></li>
+<li>JavaScript提供了 encodeURI()函数，它提供的是 UTF-8 的 URI 编码，java中通过 java.net.URLEncoder.encode(str,”字符集”)进行编码。</li>
+</ol>
+<h5 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h5><ol>
+<li>浏览器根据Content-Type指定编码对表单数据进行编码</li>
+</ol>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="web服务请求乱码"><a href="#web服务请求乱码" class="headerlink" title="web服务请求乱码"></a>web服务请求乱码</h3><h4 id="浏览器请求"><a href="#浏览器请求" class="headerlink" title="浏览器请求"></a>浏览器请求</h4><ol>
+<li>配置jsp 中的page标签</li>
+<li>前后端分离html中配置meta标签</li>
+<li>web.xml使用filter进行全局字符编码配置（spring有支持）</li>
+<li>get请求  配置tomcat以上两个配置项  server.xml</li>
+<li>以上所有的编码格式需要统一</li>
+</ol>
+<h4 id="java代码模拟请求"><a href="#java代码模拟请求" class="headerlink" title="java代码模拟请求"></a>java代码模拟请求</h4><ol>
+<li>java使用HttpURLConnection模拟http请求</li>
+<li>http请求中url的编码通过URLEncoder.encode(zzmc, HttpTest.CHARSET)进行显示编码</li>
+<li>不能使用String.getBytes(“gbk”)把字符串写到输出流里，一定要通过URLEncoder对非ASCII字符进行显示编码，因为URL编码结果是有%的</li>
+</ol>
+<h4 id="浏览器问题"><a href="#浏览器问题" class="headerlink" title="浏览器问题"></a>浏览器问题</h4><ol>
+<li>尽量使用javascript对url进行显示编码，避免浏览器自己选择编码方式编码</li>
+</ol>
+<h4 id="硬件服务器编码问题"><a href="#硬件服务器编码问题" class="headerlink" title="硬件服务器编码问题"></a>硬件服务器编码问题</h4><ol>
+<li>web应用服务端与硬件服务器编码无关</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.ruanyifeng.com/blog/2010/02/url_encoding.html" target="_blank" rel="external">非常重要的资料1</a><br><a href="https://blog.csdn.net/wb_snail/article/details/79926058" target="_blank" rel="external">非常重要的资料2</a><br><a href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5" target="_blank" rel="external">非常重要的资料3</a><br><a href="https://www.ibm.com/developerworks/cn/java/j-lo-chinesecoding/index.html" target="_blank" rel="external">非常重要的资料4</a><br><a href="https://www.ibm.com/developerworks/cn/java/j-lo-chinesecoding/index.html" target="_blank" rel="external">非常重要的资料5</a><br><a href="https://www.ibm.com/developerworks/cn/java/analysis-and-summary-of-common-random-code-problems/index.html" target="_blank" rel="external">非常重要的资料6</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java-web/" rel="tag"># java web</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/08/IO/" rel="next" title="IO">
+                <i class="fa fa-chevron-left"></i> IO
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/12/11/web编码/"
+           data-title="web编码" data-url="http://yoursite.com/2018/12/11/web编码/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Tewinsid" />
+          <p class="site-author-name" itemprop="name">Tewinsid</p>
+           
+              <p class="site-description motion-element" itemprop="description">我的个人博客</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#是什么"><span class="nav-text">是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#涉及知识点"><span class="nav-text">涉及知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用编码"><span class="nav-text">常用编码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ASCII"><span class="nav-text">ASCII</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#I字ISO-8859-X"><span class="nav-text">I字ISO-8859-X</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GBXXXX"><span class="nav-text">GBXXXX</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#GB2312-编码"><span class="nav-text">GB2312 编码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#GBK-编码"><span class="nav-text">GBK 编码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#GB18030-编码"><span class="nav-text">GB18030 编码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Big5"><span class="nav-text">Big5</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Unicode"><span class="nav-text">Unicode</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#UTF-8"><span class="nav-text">UTF-8</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#UTF-16"><span class="nav-text">UTF-16</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#UTF-32-或-UCS-4"><span class="nav-text">UTF-32(或 UCS-4)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#涉及流程"><span class="nav-text">涉及流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器处理"><span class="nav-text">浏览器处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#URI编码（含有非ASCII字符）"><span class="nav-text">URI编码（含有非ASCII字符）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Content-Type设置"><span class="nav-text">Content-Type设置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#header编码"><span class="nav-text">header编码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#body编解码"><span class="nav-text">body编解码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#规避不同浏览器问题"><span class="nav-text">规避不同浏览器问题</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器处理"><span class="nav-text">服务器处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#URI解码（GET含有非ASCII字符）"><span class="nav-text">URI解码（GET含有非ASCII字符）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置filte"><span class="nav-text">配置filte</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#手动设置content-Type"><span class="nav-text">手动设置content-Type</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java代码"><span class="nav-text">java代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jsp相关"><span class="nav-text">jsp相关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请求流程"><span class="nav-text">请求流程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#GET"><span class="nav-text">GET</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#POST"><span class="nav-text">POST</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#web服务请求乱码"><span class="nav-text">web服务请求乱码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器请求"><span class="nav-text">浏览器请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java代码模拟请求"><span class="nav-text">java代码模拟请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器问题"><span class="nav-text">浏览器问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#硬件服务器编码问题"><span class="nav-text">硬件服务器编码问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tewinsid</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"your-duoshuo-shortname"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
