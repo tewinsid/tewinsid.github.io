@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="SICP," />
+  <meta name="keywords" content="java," />
 
 
 
@@ -94,18 +94,21 @@
 
 
 
-<meta name="description" content="抽象，就是抽取事物一些本质的东西，剔除次要的表面东西。忘记数学符号所应该对应的意义，有许多操作可以应用于这些数学符号，而根本不必考虑他们代表着什么东西">
-<meta name="keywords" content="SICP">
+<meta name="description" content="java 异常处理流程">
+<meta name="keywords" content="java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Church encoding">
-<meta property="og:url" content="http://yoursite.com/2017/09/13/Church_Encoding/index.html">
+<meta property="og:title" content=" exception">
+<meta property="og:url" content="http://yoursite.com/2019/02/18/exception/index.html">
 <meta property="og:site_name" content="Tewinsid Code">
-<meta property="og:description" content="抽象，就是抽取事物一些本质的东西，剔除次要的表面东西。忘记数学符号所应该对应的意义，有许多操作可以应用于这些数学符号，而根本不必考虑他们代表着什么东西">
+<meta property="og:description" content="java 异常处理流程">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-13T11:39:08.833Z">
+<meta property="og:image" content="http://yoursite.com/image/exception1.png">
+<meta property="og:image" content="http://yoursite.com/image/exception2.png">
+<meta property="og:updated_time" content="2019-01-18T09:35:05.426Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Church encoding">
-<meta name="twitter:description" content="抽象，就是抽取事物一些本质的东西，剔除次要的表面东西。忘记数学符号所应该对应的意义，有许多操作可以应用于这些数学符号，而根本不必考虑他们代表着什么东西">
+<meta name="twitter:title" content=" exception">
+<meta name="twitter:description" content="java 异常处理流程">
+<meta name="twitter:image" content="http://yoursite.com/image/exception1.png">
 
 
 
@@ -134,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/09/13/Church_Encoding/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/02/18/exception/"/>
 
 
 
 
 
-  <title>Church encoding | Tewinsid Code</title>
+  <title> exception | Tewinsid Code</title>
   
 
 
@@ -263,7 +266,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/13/Church_Encoding/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/18/exception/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tewinsid">
@@ -280,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Church encoding</h1>
+          <h1 class="post-title" itemprop="name headline"> exception</h1>
         
 
         <div class="post-meta">
@@ -292,8 +295,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-13T19:37:05+08:00">
-                2017-09-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-18T14:37:05+08:00">
+                2019-02-18
               </time>
             
 
@@ -311,8 +314,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/09/13/Church_Encoding/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/13/Church_Encoding/" itemprop="commentCount"></span>
+                <a href="/2019/02/18/exception/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/18/exception/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -340,51 +343,35 @@
       
 
       
-        <p>抽象，就是抽取事物一些本质的东西，剔除次要的表面东西。忘记数学符号所应该对应的意义，有许多操作可以应用于这些数学符号，而根本不必考虑他们代表着什么东西</p>
-<a id="more"></a>
-<p>起因：SICP练习2-6为了展示函数式编程过程作为第一类对象原则引入了Church计数提供了如下定义</p>
-<ul>
-<li><code>(define zero (lambda (f) (lambda (x) x)))</code></li>
-<li><code>(define (add-1 n) (lambda (f) (lambda (x) (f ((n f) x)))))</code></li>
-</ul>
-<p>对此我有zero的定义产生了疑问</p>
-<ul>
-<li>0 ≡ λf.λx. x</li>
-<li>1 ≡ λf.λx. f x</li>
-<li>2 ≡ λf.λx. f (f x)</li>
-<li>3 ≡ λf.λx. f (f (f x))</li>
-<li>…</li>
-<li>n ≡ λf.λx. fn x</li>
-</ul>
-<p>邱奇数定义如上所示，邱奇数本身也是lambda函数，带入a，b后</p>
-<ul>
-<li>0 a b = (λ f x. x) a b = b</li>
-<li>1 a b = (λ f x. f x) a b = a b</li>
-<li>2 a b = (λ f x. f (f x)) a b = a (a b)</li>
-</ul>
-<p>可以看出邱奇数把数的定义从现有的数的表示的符号逻辑中抽象出来，表示为对x执行f的次数(x,f是哑元)。</p>
-<p>同时邱奇数中对0的定义同时也是λ演算对false的定义（在λ演算中bool值是一个选择函数）</p>
-<ul>
-<li>T = λ x y. x</li>
-<li>F = λ x y. y</li>
-</ul>
-<p>结论：邱奇数是数概念的另一个表示方式，是一种抽象。</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
-<li>Church Encoding 是把数据和运算符嵌入到lambda演算内的一种方式，最常见的形式是邱奇数，它是使用lambda符号的自然数的表示法。</li>
-<li>柯里化（英语：Currying）是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。</li>
-<li>λ演算（英语：lambda calculus，λ-calculus）是一套用于研究函数定义、函数应用和递归的形式系统。这种演算可以用来清晰地定义什么是一个可计算函数。Lambda演算可以被称为最小的通用程序设计语言。它包括一条变换规则（变量替换）和一条函数定义方式，Lambda演算之通用在于，任何一个可计算函数都能用这种形式来表达和求值。因而，它是等价于图灵机的。</li>
-<li>λ演算三个核心基本假定<ul>
-<li>函数为第一类对象的原则，“ 全体λ表达式构成Λ空间，λ表达式为Λ空间到Λ空间的函数 ”。</li>
-<li>函数的抽象原则，</li>
-<li>应用函数的规则，对于一个 λ 表达式 P 如果希望将另一个 λ 表达式 q 作为它的输入进行求值，我们简单的将他们左右并列书写即可。</li>
+        <p>java 异常处理流程<br><a id="more"></a></p>
+<h4 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h4><h5 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h5><ul>
+<li>自定义异常继承运行时异常</li>
+<li>运行时异常将会由虚拟机创建，一直抛出到main,并自动调用e.pringStackTace()</li>
+<li>重载构造，保留无参构造</li>
+<li>一般自定义异常信息，并暴露get方法</li>
+<li>运行时异常不会影响调用线程的运行</li>
+<li>finally 中return会覆盖try或者catch中return</li>
+<li>try中发生异常 异常后的代码都不会执行包括return</li>
+<li>在返回执行表达式前帧栈的局部变量表中存储的变量和引用均是可改变状态</li>
+<li>如果finally语句中没有return语句覆盖返回值，那么原来的返回值可能因为finally里的修改而改变也可能不变。<ul>
+<li>基础数据类型，不会改变。</li>
+<li>引用数据类型<ul>
+<li>修改引用对应堆对象存储会改变</li>
+<li>改变指针指向不会生效</li>
 </ul>
 </li>
-</ol>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://zh.wikipedia.org/wiki/%CE%9B%E6%BC%94%E7%AE%97" target="_blank" rel="external">λ演算wiki</a></li>
-<li><a href="http://www.jianshu.com/p/e7db2f50b012" target="_blank" rel="external">关键：神奇的λ演算</a></li>
-<li><a href="https://zh.wikipedia.org/wiki/%E9%82%B1%E5%A5%87%E6%95%B0" target="_blank" rel="external">邱奇数</a></li>
+<li>java可以理解为只有值传递，引用也是值，修改引用会改变堆中的存储，但是重置引用，不会影响堆中的存储</li>
 </ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public class InvoiceBadHttpException extends RuntimeException &#123;</div><div class="line">    private String msg = &quot;&quot;;</div><div class="line"></div><div class="line">    public InvoiceBadHttpException()&#123;&#125;</div><div class="line"></div><div class="line">    public InvoiceBadHttpException(String msg) &#123;    </div><div class="line">        super(msg);    </div><div class="line">        this.msg = msg;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public String getMsg() &#123;  return msg;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="异常流程"><a href="#异常流程" class="headerlink" title="异常流程"></a>异常流程</h5><ol>
+<li>try中发生异常，立刻进入catch</li>
+<li>如果catch或者try有return ，限制性finally再 回到 return</li>
+<li>finally 在return执行之后，return返回之前执行<h3 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h3></li>
+</ol>
+<p><img src="/image/exception1.png" alt="java io in"><br><img src="/image/exception2.png" alt="java io in"></p>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><p><a href="http://www.cnblogs.com/lanxuezaipiao/p/3440471.html" target="_blank" rel="external">德玛西亚</a></p>
 
       
     </div>
@@ -402,7 +389,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/SICP/" rel="tag"># SICP</a>
+            <a href="/tags/java/" rel="tag"># java</a>
           
         </div>
       
@@ -415,8 +402,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/13/书单/" rel="next" title="书单">
-                <i class="fa fa-chevron-left"></i> 书单
+              <a href="/2018/12/11/web编码/" rel="next" title="web编码">
+                <i class="fa fa-chevron-left"></i> web编码
               </a>
             
           </div>
@@ -424,10 +411,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/09/13/获取IP/" rel="prev" title="java获取IP">
-                java获取IP <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -457,8 +440,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/09/13/Church_Encoding/"
-           data-title="Church encoding" data-url="http://yoursite.com/2017/09/13/Church_Encoding/">
+      <div class="ds-thread" data-thread-key="2019/02/18/exception/"
+           data-title=" exception" data-url="http://yoursite.com/2019/02/18/exception/">
       </div>
     
   </div>
@@ -556,7 +539,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-text">参考资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#异常处理"><span class="nav-text">异常处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#自定义异常"><span class="nav-text">自定义异常</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#异常流程"><span class="nav-text">异常流程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流程图"><span class="nav-text">流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考资料"><span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>
